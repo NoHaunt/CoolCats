@@ -1,0 +1,102 @@
+#carouselExampleDark {
+    height: 340px;
+}
+
+.carousel-caption {
+    position: absolute;
+    left: 1;
+    top: 0;
+    text-align: left;
+    font-size: 30px;
+}
+
+.carousel-caption p {
+    font-size: 18px;
+}
+
+.b-100 {
+    font-weight: 300;
+}
+
+.sale {
+    color: #0063d1;
+}
+
+.carousel-indicators {
+    bottom: -15px;
+}
+
+.carousel-item {
+    height: 340px;
+}
+
+.head-img-1 {
+    background-image: url(../img/hero-home-1-img-1.jpg);
+    background-position: center;
+}
+
+.head-img-2 {
+    background-image: url(../img/hero-home-1-img-2.jpg);
+    background-position: center;
+}
+
+.head-img-3 {
+    background-image: url(../img/hero-home-1-img-3.jpg);
+    background-position: center;
+}
+
+.Hot_deals {
+    margin-top: 57px;
+}
+
+.section-content {
+    padding-bottom: 28px;
+    border-bottom: 1px solid #ddd;
+}
+
+.section-content-title {
+    font-size: 20px;
+    line-height: 22px;
+    color: #242424;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.price-del {
+    font-size: 14px;
+    color: #a4a4a4;
+    font-weight: 400;
+    text-decoration: line-through;
+    margin-right: 5px;
+}
+
+.card-title {
+    text-align: center;
+}
+
+.price-reg {
+    font-size: 16px;
+    font-weight: 500;
+    color: #0063d1;
+}
+
+.card {
+    border: none;
+    overflow: hidden;
+}
+
+.card img {
+    width: 100%;
+}
+
+.card {
+    margin: 0 auto;
+}
+
+footer {
+    margin-top: 30px;
+}
+
+main {
+    min-height: 900px;
+}
