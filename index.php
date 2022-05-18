@@ -65,7 +65,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="section-content">
-                            <h5 class="section-content-title">Самые самые популярные котики</h5>
+                            <h5 class="section-content-title">Самые самые котики!</h5>
                         </div>
                     </div>
                 </div>
