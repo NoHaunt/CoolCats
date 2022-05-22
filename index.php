@@ -16,6 +16,7 @@
 <body>
     <?
         require_once 'includes/header.php';
+        //https://www.avito.ru/schelkovo/koshki/selkirk-reks_2391810026
     ?>
     <main>
         <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
@@ -35,6 +36,7 @@
                         <br>
                         <p>Exclusive Offer <span class="sale">-20% Off</span> This Week</p>
                     </div>
+                    <img class="d-block carousel-img h-100" src="img/abis-cat.jpg" alt="">
                 </div>
                 <div class="carousel-item head-img-2" data-bs-interval="2000">
                     <div class="carousel-caption d-md-block">
@@ -74,7 +76,9 @@
                         <div class="row">
                             <div class=" col-sm-6 col-lg-3 col-12">
                                 <div class="card" style="width: 228px;height:400px">
-                                    <a href="#"> <img src="img/Main-Kun.jpg" class="card-img-top" alt="..."></a>
+                                    <div class="card-img">
+                                        <a href="#"> <img src="img/Main-Kun.jpg" class="card-img-top" alt="..."></a>
+                                    </div>
                                     <div class="card-body">
                                         <h5 class="card-title">Мейн-кун</h5>
                                         <p class="card-text" style="text-align:center;"><span class="price-del">85 000
@@ -84,7 +88,9 @@
                             </div>
                             <div class=" col-sm-6 col-lg-3 col-12">
                                 <div class="card" style="width: 228px;height:400px">
-                                    <a href="#"><img src="img/britain-gold.jpg" class="card-img-top" alt="..."></a>
+                                    <div class="card-img">
+                                        <a href="#"><img src="img/britain-gold.jpg" class="card-img-top" alt="..."></a>
+                                    </div>
                                     <div class="card-body">
                                         <h5 class="card-title">Британская золотая шиншилла</h5>
                                         <p class="card-text" style="text-align:center;"><span class="price-del">30 000
@@ -94,7 +100,9 @@
                             </div>
                             <div class=" col-sm-6 col-lg-3 col-12">
                                 <div class="card" style="width: 228px;height:400px">
-                                    <a href="#"><img src="img/abis-cat.jpg" class="card-img-top" alt="..."></a>
+                                    <div class="card-img">
+                                        <a href="#"><img src="img/abis-cat.jpg" class="card-img-top" alt="..."></a>
+                                    </div>
                                     <div class="card-body">
                                         <h5 class="card-title">Абиссинский котенок</h5>
                                         <p class="card-text" style="text-align:center;"><span class="price-del">50 000
@@ -104,7 +112,9 @@
                             </div>
                             <div class=" col-sm-6 col-lg-3 col-12">
                                 <div class="card" style="width: 228px; height:400px;">
-                                    <a href="#"><img src="img/scot-cat.jpg" class="card-img-top" alt="..."></a>
+                                    <div class="card-img">
+                                        <a href="#"><img src="img/scot-cat.jpg" class="card-img-top" alt="..."></a>
+                                    </div>
                                     <div class="card-body">
                                         <h5 class="card-title">Шотландский котенок</h5>
                                         <p class="card-text" style="text-align:center;"><span class="price-del">20 000
