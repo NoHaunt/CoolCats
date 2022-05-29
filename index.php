@@ -10,7 +10,7 @@
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
     </script>
     <link href="css/index.css" rel="stylesheet">
-    <title>CSHOP</title>
+    <title>&#128049;CSHOP&#128049;</title> <!--//&#128049; (cat emoji)-->
 </head>
 
 <body>
@@ -31,27 +31,18 @@
             <div class="carousel-inner">
                 <div class="carousel-item head-img-1 active" data-bs-interval="10000">
                     <div class="carousel-caption d-md-block">
-                        <h2 class="b-100">SMART TV 4K</h2>
-                        <h2>QLED 75 INCH Q7F</h2>
-                        <br>
-                        <p>Exclusive Offer <span class="sale">-20% Off</span> This Week</p>
+                       
                     </div>
                     <img class="d-block carousel-img h-100" src="img/abis-cat.jpg" alt="">
                 </div>
                 <div class="carousel-item head-img-2" data-bs-interval="2000">
                     <div class="carousel-caption d-md-block">
-                        <h2 class="b-100">MICROWAVE</h2>
-                        <h2>TOASTER OVEN 2019</h2>
-                        <br>
-                        <p>Exclusive Offer <span class="sale">-20% Off</span> This Week</p>
+                       
                     </div>
                 </div>
                 <div class="carousel-item head-img-3">
                     <div class="carousel-caption d-md-block">
-                        <h2 class="b-100">SAMSUNG GALAXY</h2>
-                        <h2>GALAXY S9 / S9+</h2>
-                        <br>
-                        <p>Exclusive Offer <span class="sale">-20% Off</span> This Week</p>
+                       
                     </div>
                 </div>
             </div>

@@ -4,8 +4,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
+    </script>
     <script>
         var toastElList = [].slice.call(document.querySelectorAll('.toast'))
         var toastList = toastElList.map(function (toastEl) {
@@ -20,7 +23,7 @@
 
 <body>
     <?
-        require_once 'includes/header.php';
+        require_once '../includes/header.php';
     ?>
     <div class="page-breadcrumb">
         <div style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
@@ -43,19 +46,18 @@
                     <div class="sort-box-left">
                         <div class="sort-box-tab">
                             <ul class="sort-box-tab-list nav">
-                                <li> <a class="sort-nav-link" data-toggle="tab" href="#"><i class="fas fa-border-all"></i></a> </li>
-                                <li><a class="sort-nav-link active" data-toggle="tab" href="#"><i class="fas fa-list"></i></a></li>
+                               
+                                <li><a class="sort-nav-link active" data-toggle="tab" href="#"><i
+                                            class="fas fa-list"></i></a></li>
                             </ul>
-                        </div> <span>There Are 13 Products.</span> </div>
-                    <div class="sort-box-right"> <span>Sort By:</span>
+                        </div> <span>Найдено 4 котика</span>
+                    </div>
+                    <div class="sort-box-right"> <span>Сортировать по:</span>
                         <div class="sort-box-option">
                             <label class="select-sort-arrow">
                                 <select name="select-sort" class="select-sort">
-                                    <option value="1">Relevance</option>
-                                    <option value="2">Name, A to Z</option>
-                                    <option value="3"> Name, Z to A </option>
-                                    <option value="4"> Price, low to high</option>
-                                    <option value="5">Price, high to low</option>
+                                    <option value="1">От А до Я</option>
+                                    <option value="2">От Я до А</option>
                                 </select>
                             </label>
                         </div>
@@ -72,11 +74,14 @@
                                 </div>
                                 <div class="col-md-5 position-relative">
                                     <div class="border-right"></div>
-                                    <div class="product-price"> <span class="product-price-del">$11.90</span> <span class="product-price-reg">$10.71</span> </div> <a href="#" class="product-title">
-                                Apple watch
-                            </a>
+                                    <div class="product-price"> <span class="product-price-del">$11.90</span> <span
+                                            class="product-price-reg">$10.71</span> </div> <a href="#"
+                                        class="product-title">
+                                        Apple watch
+                                    </a>
                                     <div class="product-description">
-                                        <p>Super Speed Dual Pixel Camera Infinity Display: edge to edge immersive screen, enhancing your entertainment experience* IP68 rating ...</p>
+                                        <p>Super Speed Dual Pixel Camera Infinity Display: edge to edge immersive
+                                            screen, enhancing your entertainment experience* IP68 rating ...</p>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -84,7 +89,8 @@
                                         <li>
                                             <button class="btn btn-outline-primary">Add to cart</button>
                                         </li>
-                                        <li><a href="#" class="wishlist-link"><i class="far fa-heart"></i>Add to wishlist</a></li>
+                                        <li><a href="#" class="wishlist-link"><i class="far fa-heart"></i>Add to
+                                                wishlist</a></li>
                                         <li><a href="#" class="Quick-view"><i class="far fa-eye"></i>Quick view</a></li>
                                     </ul>
                                 </div>
@@ -101,11 +107,14 @@
                                 </div>
                                 <div class="col-md-5 position-relative">
                                     <div class="border-right"></div>
-                                    <div class="product-price"> <span class="product-price-del">$11.90</span> <span class="product-price-reg">$10.71</span> </div> <a href="#" class="product-title">
-                                Samsung Galaxy S9
-                            </a>
+                                    <div class="product-price"> <span class="product-price-del">$11.90</span> <span
+                                            class="product-price-reg">$10.71</span> </div> <a href="#"
+                                        class="product-title">
+                                        Samsung Galaxy S9
+                                    </a>
                                     <div class="product-description">
-                                        <p>Super Speed Dual Pixel Camera Infinity Display: edge to edge immersive screen, enhancing your entertainment experience* IP68 rating ...</p>
+                                        <p>Super Speed Dual Pixel Camera Infinity Display: edge to edge immersive
+                                            screen, enhancing your entertainment experience* IP68 rating ...</p>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -113,7 +122,8 @@
                                         <li>
                                             <button class="btn btn-outline-primary">Add to cart</button>
                                         </li>
-                                        <li><a href="#" class="wishlist-link"><i class="far fa-heart"></i>Add to wishlist</a></li>
+                                        <li><a href="#" class="wishlist-link"><i class="far fa-heart"></i>Add to
+                                                wishlist</a></li>
                                         <li><a href="#" class="Quick-view"><i class="far fa-eye"></i>Quick view</a></li>
                                     </ul>
                                 </div>
@@ -130,11 +140,14 @@
                                 </div>
                                 <div class="col-md-5 position-relative">
                                     <div class="border-right"></div>
-                                    <div class="product-price"> <span class="product-price-del">$11.90</span> <span class="product-price-reg">$10.71</span> </div> <a href="#" class="product-title">
-                                Samsung Galaxy S9
-                            </a>
+                                    <div class="product-price"> <span class="product-price-del">$11.90</span> <span
+                                            class="product-price-reg">$10.71</span> </div> <a href="#"
+                                        class="product-title">
+                                        Samsung Galaxy S9
+                                    </a>
                                     <div class="product-description">
-                                        <p>Super Speed Dual Pixel Camera Infinity Display: edge to edge immersive screen, enhancing your entertainment experience* IP68 rating ...</p>
+                                        <p>Super Speed Dual Pixel Camera Infinity Display: edge to edge immersive
+                                            screen, enhancing your entertainment experience* IP68 rating ...</p>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -142,7 +155,8 @@
                                         <li>
                                             <button class="btn btn-outline-primary">Add to cart</button>
                                         </li>
-                                        <li><a href="#" class="wishlist-link"><i class="far fa-heart"></i>Add to wishlist</a></li>
+                                        <li><a href="#" class="wishlist-link"><i class="far fa-heart"></i>Add to
+                                                wishlist</a></li>
                                         <li><a href="#" class="Quick-view"><i class="far fa-eye"></i>Quick view</a></li>
                                     </ul>
                                 </div>
@@ -159,11 +173,14 @@
                                 </div>
                                 <div class="col-md-5 position-relative">
                                     <div class="border-right"></div>
-                                    <div class="product-price"> <span class="product-price-del">$11.90</span> <span class="product-price-reg">$10.71</span> </div> <a href="#" class="product-title">
-                               Wed 9
-                            </a>
+                                    <div class="product-price"> <span class="product-price-del">$11.90</span> <span
+                                            class="product-price-reg">$10.71</span> </div> <a href="#"
+                                        class="product-title">
+                                        Wed 9
+                                    </a>
                                     <div class="product-description">
-                                        <p>Super Speed Dual Pixel Camera Infinity Display: edge to edge immersive screen, enhancing your entertainment experience* IP68 rating ...</p>
+                                        <p>Super Speed Dual Pixel Camera Infinity Display: edge to edge immersive
+                                            screen, enhancing your entertainment experience* IP68 rating ...</p>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -171,7 +188,8 @@
                                         <li>
                                             <button class="btn btn-outline-primary">Add to cart</button>
                                         </li>
-                                        <li><a href="#" class="wishlist-link"><i class="far fa-heart"></i>Add to wishlist</a></li>
+                                        <li><a href="#" class="wishlist-link"><i class="far fa-heart"></i>Add to
+                                                wishlist</a></li>
                                         <li><a href="#" class="Quick-view"><i class="far fa-eye"></i>Quick view</a></li>
                                     </ul>
                                 </div>
@@ -193,16 +211,9 @@
             </div>
         </div>
     </div>
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 5">
-        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header"> <strong class="me-auto">Notification</strong> <small>Right now</small>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Закрыть"></button>
-            </div>
-            <div class="toast-body"> Added to cart </div>
-        </div>
-    </div>
+    
     <?
-        require_once 'includes/footer.php';
+        require_once '../includes/footer.php';
     ?>
 </body>
 
