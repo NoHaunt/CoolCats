@@ -1,0 +1,1 @@
+INSERT INTO `Kotiki`(`id`, `name`, `description`, `price`, `url_picture`) VALUES (null, "Абиссинский котенок" , "", 40000, "img/abis-cat.jpg")INSERT INTO `Kotiki`(`id`, `name`, `description`, `price`, `url_picture`) VALUES (null, "Абиссинский котенок" , "", 40000, "img/abis-cat.jpg")
