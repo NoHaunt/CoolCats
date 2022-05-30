@@ -18,7 +18,7 @@
         <div class="box">
             <input type="password"> <span data-placeholder="Пароль"></span> </div>
         <input type="submit" class="signin" value="Login">
-        <div class="bottom-txt">Ещё не зарегистрированы? <a href="register.html">Зарегистрироваться</a></div>
+        <div class="bottom-txt">Ещё не зарегистрированы? <a href="register.php">Зарегистрироваться</a></div>
     </form>
     <script src="../js/auth.js"></script>
 </body>

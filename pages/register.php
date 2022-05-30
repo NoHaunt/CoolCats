@@ -11,7 +11,7 @@
 
 <body>
     <form action="loginpage.html" class="login-form">
-        <h1>Register</h1>
+        <h1>Регистрация</h1>
         <div class="box">
             <input type="text"> <span data-placeholder="Имя"></span> </div>
         <div class="box">
@@ -22,7 +22,7 @@
             <input type="password"> <span data-placeholder="Пароль"></span> </div>
         <div class="box">
             <input type="password"> <span data-placeholder="Подтвердите пароль"></span> </div>
-        <input type="submit" class="signin" value="Register">
+        <input type="submit" class="signin" value="Зарегистрироваться">
     </form>
     <script src="../js/auth.js"></script>
 </body>
