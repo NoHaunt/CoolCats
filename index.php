@@ -1,5 +1,16 @@
 <!Doctype html>
 <html>
+<?
+$hostname = 'localhost';
+$username = 'root';
+$password = '';
+$dbname = 'db_kotiki';
+
+require_once "classes/DataBase.php";
+
+$database = DataBase::getInstance($hostname, $username, $password, $dbname);
+
+?>
 
 <head>
     <meta charset="utf-8">
@@ -64,6 +75,9 @@
                 </div>
                 <div class="Hot_deals_items">
                     <div class="container">
+                        <?
+                        $select = $database->select_query("SELECT * FROM USERS");
+                        ?>
                         <div class="row">
                             <div class=" col-sm-6 col-lg-3 col-12">
                                 <div class="card" style="width: 228px;height:400px">
