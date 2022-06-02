@@ -9,7 +9,6 @@ $dbname = 'db_kotiki';
 require_once "classes/DataBase.php";
 
 $database = DataBase::getInstance($hostname, $username, $password, $dbname);
-
 ?>
 
 <head>
@@ -75,55 +74,75 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
                 </div>
                 <div class="Hot_deals_items">
                     <div class="container">
-                        <?
-                        $select = $database->select_query("SELECT * FROM USERS");
-                        ?>
                         <div class="row">
                             <div class=" col-sm-6 col-lg-3 col-12">
+                                <?
+                                $select = $database->select_query("
+                                    SELECT * FROM Kotiki
+                                        WHERE name = 'Мейн-кун'");
+                                ?>
                                 <div class="card" style="width: 228px;height:400px">
                                     <div class="card-img">
-                                        <a href="#"> <img src="img/Main-Kun.jpg" class="card-img-top" alt="..."></a>
+                                        <a href="#"> <img src="<?=$select['url_picture']?>" class="card-img-top" alt="..."></a>
                                     </div>
                                     <div class="card-body">
                                         <h5 class="card-title">Мейн-кун</h5>
                                         <p class="card-text" style="text-align:center;"><span class="price-del">85 000
-                                                руб.</span> <span class="price-reg">65 000 руб.</span></p>
+                                                руб.</span>
+                                                <span class="price-reg">
+                                                    <?echo number_format($select["price"], 0, ",", " ")?> руб.
+                                                </span></p>
                                     </div>
                                 </div>
                             </div>
                             <div class=" col-sm-6 col-lg-3 col-12">
+                                <?
+                                $select = $database->select_query("
+                                    SELECT * FROM Kotiki
+                                        WHERE name = 'Британская золотая шиншилла'");
+                                ?>
                                 <div class="card" style="width: 228px;height:400px">
                                     <div class="card-img">
-                                        <a href="#"><img src="img/britain-gold.jpg" class="card-img-top" alt="..."></a>
+                                        <a href="#"><img src="<?=$select['url_picture']?>" class="card-img-top" alt="..."></a>
                                     </div>
                                     <div class="card-body">
                                         <h5 class="card-title">Британская золотая шиншилла</h5>
                                         <p class="card-text" style="text-align:center;"><span class="price-del">30 000
-                                                руб.</span> <span class="price-reg">25 000 руб.</span></p>
+                                                руб.</span> <span class="price-reg"><?echo number_format($select["price"], 0, ",", " ")?> руб.</span></p>
                                     </div>
                                 </div>
                             </div>
                             <div class=" col-sm-6 col-lg-3 col-12">
+                                <?
+                                $select = $database->select_query("
+                                    SELECT * FROM Kotiki
+                                        WHERE name = 'Абиссинский котенок'");
+                                ?>
                                 <div class="card" style="width: 228px;height:400px">
                                     <div class="card-img">
-                                        <a href="#"><img src="img/abis-cat.jpg" class="card-img-top" alt="..."></a>
+                                        <a href="#"><img src="<?=$select['url_picture']?>" class="card-img-top" alt="..."></a>
                                     </div>
                                     <div class="card-body">
                                         <h5 class="card-title">Абиссинский котенок</h5>
                                         <p class="card-text" style="text-align:center;"><span class="price-del">50 000
-                                                руб.</span> <span class="price-reg">40 000 руб.</span></p>
+                                                руб.</span> <span class="price-reg"><?echo number_format($select["price"], 0, ",", " ")?> руб.</span></p>
                                     </div>
                                 </div>
                             </div>
                             <div class=" col-sm-6 col-lg-3 col-12">
+                                <?
+                                $select = $database->select_query("
+                                    SELECT * FROM Kotiki
+                                        WHERE name = 'Шотландский котенок'");
+                                ?>
                                 <div class="card" style="width: 228px; height:400px;">
                                     <div class="card-img">
-                                        <a href="#"><img src="img/scot-cat.jpg" class="card-img-top" alt="..."></a>
+                                        <a href="#"><img src="<?=$select['url_picture']?>" class="card-img-top" alt="..."></a>
                                     </div>
                                     <div class="card-body">
                                         <h5 class="card-title">Шотландский котенок</h5>
                                         <p class="card-text" style="text-align:center;"><span class="price-del">20 000
-                                                руб.</span> <span class="price-reg">15 000 руб.</span></p>
+                                                руб.</span> <span class="price-reg"><?echo number_format($select["price"], 0, ",", " ")?> руб.</span></p>
                                     </div>
                                 </div>
                             </div>

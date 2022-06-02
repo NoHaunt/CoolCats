@@ -10,3 +10,6 @@ VALUES (null, "Британская золотая шиншилла", "", 25000,
 
 INSERT INTO `Kotiki`(`id`, `name`, `description`, `price`, `url_picture`)
 VALUES (null, "Шотландский котенок", "", 15000, "img/scot-cat.jpg");
+
+INSERT INTO `Kotiki`(`id`, `name`, `description`, `price`, `url_picture`)
+VALUES (null, "Селкирк-рекс", "", 15000, "img/Selcirk-racs.jpg");
