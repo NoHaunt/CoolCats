@@ -20,7 +20,8 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
     </script>
     <link href="css/index.css" rel="stylesheet">
-    <title>&#128049;CSHOP&#128049;</title> <!--//&#128049; (cat emoji)-->
+    <title>&#128049;CSHOP&#128049;</title>
+    <!--//&#128049; (cat emoji)-->
 </head>
 
 <body>
@@ -41,18 +42,41 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
             <div class="carousel-inner">
                 <div class="carousel-item head-img-1 active" data-bs-interval="10000">
                     <div class="carousel-caption d-md-block">
-                       
                     </div>
-                    <img class="d-block carousel-img h-100" src="img/abis-cat.jpg" alt="">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-2"></div>
+                            <div class="col-8">
+                                <img class="carousel-img w-100" src="img/abis-cat.jpg" alt="">
+                            </div>
+                            <div class="col-2"></div>
+                        </div>
+                    </div>
                 </div>
                 <div class="carousel-item head-img-2" data-bs-interval="2000">
                     <div class="carousel-caption d-md-block">
-                       
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-2"></div>
+                            <div class="col-8">
+                                <img class="carousel-img w-100" src="img/britain-gold.jpg" alt="">
+                            </div>
+                            <div class="col-2"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="carousel-item head-img-3">
                     <div class="carousel-caption d-md-block">
-                       
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-2"></div>
+                            <div class="col-8">
+                                <img class="carousel-img w-100" src="img/scot-cat.jpg" alt="">
+                            </div>
+                            <div class="col-2"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -83,15 +107,16 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
                                 ?>
                                 <div class="card" style="width: 228px;height:400px">
                                     <div class="card-img">
-                                        <a href="#"> <img src="<?=$select['url_picture']?>" class="card-img-top" alt="..."></a>
+                                        <a href="#"> <img src="<?=$select['url_picture']?>" class="card-img-top"
+                                                alt="..."></a>
                                     </div>
                                     <div class="card-body">
                                         <h5 class="card-title">Мейн-кун</h5>
                                         <p class="card-text" style="text-align:center;"><span class="price-del">85 000
                                                 руб.</span>
-                                                <span class="price-reg">
-                                                    <?echo number_format($select["price"], 0, ",", " ")?> руб.
-                                                </span></p>
+                                            <span class="price-reg">
+                                                <?echo number_format($select["price"], 0, ",", " ")?> руб.
+                                            </span></p>
                                     </div>
                                 </div>
                             </div>
@@ -103,12 +128,14 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
                                 ?>
                                 <div class="card" style="width: 228px;height:400px">
                                     <div class="card-img">
-                                        <a href="#"><img src="<?=$select['url_picture']?>" class="card-img-top" alt="..."></a>
+                                        <a href="#"><img src="<?=$select['url_picture']?>" class="card-img-top"
+                                                alt="..."></a>
                                     </div>
                                     <div class="card-body">
                                         <h5 class="card-title">Британская золотая шиншилла</h5>
                                         <p class="card-text" style="text-align:center;"><span class="price-del">30 000
-                                                руб.</span> <span class="price-reg"><?echo number_format($select["price"], 0, ",", " ")?> руб.</span></p>
+                                                руб.</span> <span class="price-reg">
+                                                <?echo number_format($select["price"], 0, ",", " ")?> руб.</span></p>
                                     </div>
                                 </div>
                             </div>
@@ -120,12 +147,14 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
                                 ?>
                                 <div class="card" style="width: 228px;height:400px">
                                     <div class="card-img">
-                                        <a href="#"><img src="<?=$select['url_picture']?>" class="card-img-top" alt="..."></a>
+                                        <a href="#"><img src="<?=$select['url_picture']?>" class="card-img-top"
+                                                alt="..."></a>
                                     </div>
                                     <div class="card-body">
                                         <h5 class="card-title">Абиссинский котенок</h5>
                                         <p class="card-text" style="text-align:center;"><span class="price-del">50 000
-                                                руб.</span> <span class="price-reg"><?echo number_format($select["price"], 0, ",", " ")?> руб.</span></p>
+                                                руб.</span> <span class="price-reg">
+                                                <?echo number_format($select["price"], 0, ",", " ")?> руб.</span></p>
                                     </div>
                                 </div>
                             </div>
@@ -137,12 +166,14 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
                                 ?>
                                 <div class="card" style="width: 228px; height:400px;">
                                     <div class="card-img">
-                                        <a href="#"><img src="<?=$select['url_picture']?>" class="card-img-top" alt="..."></a>
+                                        <a href="#"><img src="<?=$select['url_picture']?>" class="card-img-top"
+                                                alt="..."></a>
                                     </div>
                                     <div class="card-body">
                                         <h5 class="card-title">Шотландский котенок</h5>
                                         <p class="card-text" style="text-align:center;"><span class="price-del">20 000
-                                                руб.</span> <span class="price-reg"><?echo number_format($select["price"], 0, ",", " ")?> руб.</span></p>
+                                                руб.</span> <span class="price-reg">
+                                                <?echo number_format($select["price"], 0, ",", " ")?> руб.</span></p>
                                     </div>
                                 </div>
                             </div>
