@@ -21,6 +21,10 @@
     font-size: 18px;
 }
 
+.icon {
+    text-align: center;
+    align-items: center;
+}
 .b-100 {
     font-weight: 300;
 }

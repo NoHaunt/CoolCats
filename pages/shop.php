@@ -74,7 +74,7 @@
                                 </div>
                                 <div class="col-md-5 position-relative">
                                     <div class="border-right"></div>
-                                    <div class="product-price"> <span class="product-price-del">$11.90</span> <span
+                                    <div class="product-price"><span
                                             class="product-price-reg">$10.71</span> </div> <a href="#"
                                         class="product-title">
                                         Apple watch
