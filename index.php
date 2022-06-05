@@ -9,7 +9,9 @@ if (isset($search)){
         header("Location: " . "pages/shop.php");
     }
 }
-
+if(isset($_GET["toCart"])){
+    header("Location: " . "pages/busket.php");
+}
 $hostname = 'localhost';
 $username = 'root';
 $password = '';
