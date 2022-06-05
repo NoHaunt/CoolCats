@@ -148,7 +148,7 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
                         <ul class="list-group shop-list">
                             <?for($i=0; $i < count($select); $i++):?>
                             <li class="list-group-item">
-                                <form class="product-box d-block">
+                                <form method="post" class="product-box d-block">
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="product-img-box">
@@ -194,8 +194,8 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
 </html>
 
 <?
-if (isset($_GET["add_in_busket"])) {
-    $index = $_GET["add_in_busket"];
+if (isset($_POST["add_in_busket"])) {
+    $index = $_POST["add_in_busket"];
 
     $id_cat_in_busket = $select[$index]['id'];
     $id_user = $_SESSION["id"];
