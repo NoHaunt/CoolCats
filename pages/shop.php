@@ -7,11 +7,11 @@ if (isset($_GET["Search"])) {
         header("Location: " . "shop.php");
     }
 }
-if(isset($_GET["toCart"])){
+if (isset($_GET["toCart"])) {
     header("Location: " . "busket.php");
 }
 
-if (isset($_GET["ToLogin"])){
+if (isset($_GET["ToLogin"])) {
     header("Location: " . "login.php");
 }
 
@@ -19,7 +19,7 @@ if (isset($_GET["toProfile"])) {
     header("Location: " . "profile.php");
 }
 
-if(isset($_GET["toCart"]))
+if (isset($_GET["toCart"]))
     header("Location: " . "busket.php");
 
 if (isset($_GET["ToLogin"]))
@@ -85,7 +85,7 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
                                 <button class="btn btn-outline-light search" type="submit" name="Search">Поиск</button>
                                 <?
                                 session_start();
-                                if (isset($_SESSION['login'])):
+                                if (isset($_SESSION['login'])) :
                                 ?>
                                     <a href="pages/busket.php"> <button class="btn text-light icon d-flex" name="toCart">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
@@ -97,9 +97,9 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
                                             <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
                                         </svg>
                                     </button>
-                                <?else:?>
+                                <? else : ?>
                                     <button class="btn btn-outline-light" type="submit" name="ToLogin">Войти</button>
-                                <?endif?>
+                                <? endif ?>
                             </form>
                         </div>
                     </div>
@@ -146,7 +146,7 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
                                     </ul>
                                 </div> <span>Найдено <?= $countCats ?> котика</span>
                             </div>
-                            
+
                         </div>
                         <? if ($select) : ?>
 

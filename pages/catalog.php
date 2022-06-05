@@ -11,7 +11,7 @@ if (isset($_GET["Search"])) {
     }
 }
 
-if(isset($_GET["toCart"]))
+if (isset($_GET["toCart"]))
     header("Location: " . "busket.php");
 
 if (isset($_GET["ToLogin"]))
@@ -54,7 +54,7 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
     <link href="../css/wrapper.css" rel="stylesheet">
     <title>&#128049;CSHOP&#128049;</title>
 </head>
- 
+
 <body>
     <div class="wrapper">
         <header class="header">
@@ -76,7 +76,7 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
                                 <button class="btn btn-outline-light search" type="submit" name="Search">Поиск</button>
                                 <?
                                 session_start();
-                                if (isset($_SESSION['login'])):
+                                if (isset($_SESSION['login'])) :
                                 ?>
                                     <a href="pages/busket.php"> <button class="btn text-light icon d-flex" name="toCart">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
@@ -88,9 +88,9 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
                                             <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
                                         </svg>
                                     </button>
-                                <?else:?>
+                                <? else : ?>
                                     <button class="btn btn-outline-light" type="submit" name="ToLogin">Войти</button>
-                                <?endif?>
+                                <? endif ?>
                             </form>
                         </div>
                     </div>
@@ -129,47 +129,47 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
 
                                         <li><a class="sort-nav-link active" data-toggle="tab" href="#"><i class="fas fa-list"></i></a></li>
                                     </ul>
-                                </div> <span>Всего <?=$countCats?> кульных котика</span>
+                                </div> <span>Всего <?= $countCats ?> кульных котика</span>
                             </div>
-                            
+
                         </div>
-                        <?if($select):?>
-                        <ul class="list-group shop-list">
-                            <?for($i=0; $i < count($select); $i++):?>
-                            <li class="list-group-item">
-                                <form method="post" class="product-box d-block">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="product-img-box">
-                                                <a href="#"><img class="product-img" src="../<?=$select[$i]["url_picture"]?>"></a>
+                        <? if ($select) : ?>
+                            <ul class="list-group shop-list">
+                                <? for ($i = 0; $i < count($select); $i++) : ?>
+                                    <li class="list-group-item">
+                                        <form method="post" class="product-box d-block">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="product-img-box">
+                                                        <a href="#"><img class="product-img" src="../<?= $select[$i]["url_picture"] ?>"></a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5 position-relative">
+                                                    <div class="border-right"></div>
+                                                    <div class="product-price">
+                                                        <span class="product-price-reg"><? echo number_format($select[$i]["price"], 0, ",", " "); ?> руб.</span>
+                                                    </div> <a href="#" class="product-title">
+                                                        <?= $select[$i]["name"] ?>
+                                                    </a>
+                                                    <div class="product-description">
+                                                        <p><?= $select[$i]["description"] ?></p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <ul class="shop-list-link">
+                                                        <li>
+                                                            <button value="<?= $i ?>" name="add_in_busket" class="btn btn-outline-primary">Добавить в корзину</button>
+                                                        </li>
+                                                        <li><a href="#" class="Quick-view"><i class="far fa-eye"></i>Просмотр</a></li>
+                                                    </ul>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-5 position-relative">
-                                            <div class="border-right"></div>
-                                            <div class="product-price">
-                                                <span class="product-price-reg"><?echo number_format($select[$i]["price"], 0, ",", " ");?> руб.</span>
-                                            </div> <a href="#" class="product-title">
-                                                <?=$select[$i]["name"]?>
-                                            </a>
-                                            <div class="product-description">
-                                                <p><?=$select[$i]["description"]?></p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <ul class="shop-list-link">
-                                                <li>
-                                                    <button value="<?=$i?>" name="add_in_busket" class="btn btn-outline-primary">Добавить в корзину</button>
-                                                </li>
-                                                <li><a href="#" class="Quick-view"><i class="far fa-eye"></i>Просмотр</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </form>
-                            </li>
-                            <?endfor?>
-                        </ul>
-                        <?endif?>
-                        
+                                        </form>
+                                    </li>
+                                <? endfor ?>
+                            </ul>
+                        <? endif ?>
+
                     </div>
                 </div>
             </div>
@@ -189,4 +189,4 @@ if (isset($_POST["add_in_busket"])) {
     $id_cat_in_busket = $select[$index]['id'];
     $id_user = $_SESSION["id"];
     $database->query("INSERT INTO `orders`(`id`, `id_User`, `id_Kotik`, `purchased`) VALUES (null, $id_user, $id_cat_in_busket, 0)");
-}?>
+} ?>
