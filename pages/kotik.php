@@ -1,9 +1,10 @@
-<!Doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
@@ -37,7 +38,7 @@
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item"> <a class="nav-link" aria-current="page"
                                     href="../index.php">Главная</a> </li>
-                            <li class="nav-item"> <a class="nav-link active"
+                            <li class="nav-item"> <a class="nav-link"
                                     href="http://localhost/CoolCats/pages/shop.php">Каталог</a>
                             </li>
                         </ul>
@@ -73,7 +74,8 @@
                             <div class="col-12">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="../index.php">Домашняя</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Каталог</li>
+                                    <li class="breadcrumb-item" aria-current="page"><a href="shop.php"> Каталог</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Абиссинский котик</li>
                                 </ol>
                             </div>
                         </div>
@@ -81,75 +83,37 @@
                 </div>
             </div>
             <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="sort-box">
-                            <div class="sort-box-left">
-                                <div class="sort-box-tab">
-                                    <ul class="sort-box-tab-list nav">
-
-                                        <li><a class="sort-nav-link active" data-toggle="tab" href="#"><i
-                                                    class="fas fa-list"></i></a></li>
-                                    </ul>
-                                </div> <span>Найдено 4 котика</span>
-                            </div>
-                            <div class="sort-box-right"> <span>Сортировать:</span>
-                                <div class="sort-box-option">
-                                    <label class="select-sort-arrow">
-                                        <select name="select-sort" class="select-sort">
-                                            <option value="1">От А до Я</option>
-                                            <option value="2">От Я до А</option>
-                                        </select>
-                                    </label>
-                                </div>
+                <div class="product-box">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="product-img-box">
+                                <a href="kotik.html"><img class="product-img" src="../img/abis-cat.jpg"></a>
                             </div>
                         </div>
-                        <ul class="list-group shop-list">
-                            <li class="list-group-item">
-                                <div class="product-box">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="product-img-box">
-                                                <a href="kotik.php"><img class="product-img" src="../img/abis-cat.jpg"></a>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-5 position-relative">
-                                            <div class="border-right"></div>
-                                            <div class="product-price">
-                                                <span class="product-price-reg">20 000 руб.</span>
-                                            </div> <a href="kotik.php" class="product-title">
-                                                Абисссинский кот
-                                            </a>
-                                            <div class="product-description">
-                                                <p>Кот блять ахуенный</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <ul class="shop-list-link">
-                                                <li>
-                                                    <button class="btn btn-outline-primary">Добавить в корзину</button>
-                                                </li>
-                                                <li><a href="kotik.php" class="Quick-view"><i
-                                                            class="far fa-eye"></i>Просмотр</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                        <div class="page-pagination"> <span>Показываются 4 котика из 13</span>
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination">
-                                    <li class="page-item disabled"><a class="page-link" href="#">Назад</a></li>
-                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">Далее</a></li>
-                                </ul>
-                            </nav>
+                        <div class="col-md-5 position-relative">
+                            <div class="border-right"></div>
+                            <div class="product-price">
+                                <span class="product-price-reg">20 000 руб.</span>
+                            </div> <a href="kotik.html" class="product-title">
+                                Абисссинский кот
+                            </a>
+                            <div class="product-description">
+                                <p>Кот блять ахуенный</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <ul class="shop-list-link">
+                                <li>
+                                    <button class="btn btn-outline-primary">Добавить в корзину</button>
+                                </li>
+                                <li><a href="kotik.html" class="Quick-view"><i
+                                            class="far fa-eye"></i>Просмотр</a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
+
+
             </div>
         </main>
         <?
