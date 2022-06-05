@@ -3,20 +3,27 @@ $hostname = 'localhost';
 $username = 'root';
 $password = '';
 $dbname = 'db_kotiki';
-$database = mysqli_connect($hostname, $username, $password, $dbname);
 
-require_once "../classes/Regi.php";
+require_once "../classes/DataBase.php";
 
+$database = DataBase::getInstance($hostname, $username, $password, $dbname);
 
 $data = $_POST;
 $user_login = $data['login'];
 $new_url = '../index.php';
 $query = "SELECT login FROM users WHERE login = '$user_login'";
+$select = $database->select_query($query);
 if(isset($data['enter']))
 {
-    if($data['login'] == $employed)
-        echo 'Такой логин уже занят, но вы можете попробывать ' . $user_login . '228';
-    else {
+    $check = true;
+    foreach ($select as $value) {
+        if ($value["login"] == $user_login)
+            echo 'Такой логин уже занят, но вы можете попробывать ' . $user_login . '228';
+            $check = false;
+            break;
+    }
+
+    if ($check) {
         $check_regi = new Regi($database);
         if ($check_regi->registration($data) == 1)
             header('Location: ' . $new_url);

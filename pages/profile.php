@@ -115,7 +115,7 @@ if (isset($_POST["descriptionSiteSubmit"])){
                             <li class="nav-item"> <a href="../index.php"><img class="logo-img" src="../favicon/logo.png">
                                 </a></li>
                             <li class="nav-item"> <a class="nav-link" aria-current="page" href="../index.php">Главная</a> </li>
-                            <li class="nav-item"> <a class="nav-link" href="http://localhost/CoolCats/pages/shop.php">Каталог</a>
+                            <li class="nav-item"> <a class="nav-link" href="catalog.php">Каталог</a>
                             </li>
                         </ul>
                         <div class="d-flex">
@@ -171,9 +171,9 @@ if (isset($_POST["descriptionSiteSubmit"])){
                                 </div>
                                 <div class="col-3"><input type="text" name="passwordCheck" class="form-control head-text" placeholder="Подтвреждение пароля"></div>
                                 <button name="submitPassword" class="head-text btn btn-primary">Сменить пароль</button>
-                                <? if ($_COOKIE['passwordCheck'] == "falsePassword") : ?>
+                                <? if ($_COOKIE['passwordCheck'] == "falsePassword"):?>
                                     <p class="error-change">Ошибка пароли не совпадают</p>
-                                <? endif ?>
+                                <?endif?>
                                 <button name="exit" class="btn btn-danger head-text">Выйти</button>
                             </form>
                             <?if ($_SESSION['role'] == "Admin"):?>

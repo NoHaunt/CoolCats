@@ -75,8 +75,7 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item"> <a href="../index.php"><img class="logo-img" src="../favicon/logo.png"> </a></li>
                             <li class="nav-item"> <a class="nav-link" aria-current="page" href="../index.php">Главная</a> </li>
-                            <li class="nav-item"> <a class="nav-link active" href="shop.php">Каталог</a>
-                            </li>
+                            <li class="nav-item"> <a class="nav-link" href="catalog.php">Каталог</a>
                         </ul>
                         <div class="d-flex">
                             <form>
