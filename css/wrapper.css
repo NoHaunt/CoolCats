@@ -8,6 +8,10 @@ body{
 form{
     display: flex ;
 }
+.icon :hover{
+    transition: .5s;
+    color:	#bec7be;
+}
 .wrapper{
     min-height: 100%;
     display: flex;
@@ -19,7 +23,9 @@ form{
 .footer{
     height: 56px;
 }
-
+.search{
+    margin-right: 10px;
+}
 .logo-img{
     height:40px;
     width: auto;
