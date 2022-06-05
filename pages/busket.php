@@ -9,15 +9,9 @@ require_once "../classes/DataBase.php";
 
 $database = DataBase::getInstance($hostname, $username, $password, $dbname);
 $user_id = $_SESSION['id'];
-$order = $database->select_query("SELECT * FROM `orders`
-    JOIN kotiki
-        ON orders.id_Kotik = kotiki.id
-    JOIN users
-        ON orders.id_User = users.id
-    WHERE orders.purchased = 0 AND users.id = $user_id");
 if(isset($_GET['buy']))
 {
-    $query = "INSERT INTO orders(`id`, `id_user`, `id_Kotik`, `purchased`) VALUES (NULL, '$user_id', '', 1)";
+    $query = "UPDATE `orders` SET `purchased`='1' WHERE id_User = $user_id";
 }
 ?>
 <!DOCTYPE html>
