@@ -8,17 +8,14 @@ if (isset($_GET["Search"])){
     }
 }
 
-if(isset($_GET["toCart"])){
+if(isset($_GET["toCart"]))
     header("Location: " . "pages/busket.php");
-}
 
-if (isset($_GET["ToLogin"])){
+if (isset($_GET["ToLogin"]))
     header("Location: " . "pages/login.php");
-}
 
-if (isset($_GET["toProfile"])) {
+if (isset($_GET["toProfile"]))
     header("Location: " . "pages/profile.php");
-}
 
 $hostname = 'localhost';
 $username = 'root';

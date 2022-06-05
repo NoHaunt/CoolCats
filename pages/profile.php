@@ -1,3 +1,49 @@
+<?
+session_start();
+$name_cat = $_GET['SearchPlaceHolder'];
+
+if (isset($_GET["Search"])) {
+    if ($name_cat) {
+        setcookie("SearchCookie", $name_cat, time() + 600);
+        header("Location: " . "shop.php");
+    }
+}
+
+if(isset($_GET["toCart"]))
+    header("Location: " . "busket.php");
+
+if (isset($_GET["ToLogin"]))
+    header("Location: " . "login.php");
+
+if (isset($_GET["toProfile"]))
+    header("Location: " . "profile.php");
+
+$hostname = 'localhost';
+$username = 'root';
+$password = '';
+$dbname = 'db_kotiki';
+
+require_once "../classes/DataBase.php";
+
+$database = DataBase::getInstance($hostname, $username, $password, $dbname);
+
+if (isset($_POST["submitPassword"])) {
+    $check = ($_POST['password'] == $_POST['passwordCheck']);
+    
+    $password = hash("md5", $_POST['password']);
+
+    $login = $_SESSION['login'];
+
+    if($check){
+        $insert = $database->query("UPDATE users SET password = '$password' WHERE login = '$login'");
+        setcookie("passwordCheck", "truePassword", time()+60);
+    }
+    else{
+        setcookie("passwordCheck", "falsePassword", time()+60);
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -84,15 +130,20 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="profile-container container">
-                            <h4 class="head-text">Профиль</h4>
-                            <div class="profile-border"></div>
-                            <h5 class="head-text">Изменить пароль</h5>
-                            <div class="col-3">
-                                <input type="text" name="password" class="form-control head-text" placeholder="Новый пароль">
-                            </div>
-                            <div class="col-3"><input type="text" name="password" class="form-control head-text" placeholder="Подтвреждение пароля"></div>
-                            <button class="head-text btn btn-primary">Сменить пароль</button>
-                            <p class="error-change">Ошибка пароли не совпадают</p>
+                            <form method="post" class="d-block">
+                                <h4 class="head-text">Профиль</h4>
+                                <div class="profile-border"></div>
+                                <h5 class="head-text">Изменить пароль</h5>
+                                <div class="col-3">
+                                    <input type="text" name="password" class="form-control head-text" placeholder="Новый пароль">
+                                </div>
+                                <div class="col-3"><input type="text" name="passwordCheck" class="form-control head-text" placeholder="Подтвреждение пароля"></div>
+                                <button name="submitPassword" class="head-text btn btn-primary">Сменить пароль</button>
+                                <?if($_COOKIE['passwordCheck'] == "falsePassword"):?>
+                                    <p class="error-change">Ошибка пароли не совпадают</p>
+                                <?endif?>
+                            </form>
+                            <?if ($_SESSION['role'] == "Admin"):?>                            }
                             <div class="admin-panel">
                                 <h5>Панель админа</h5>
                                 <div class="profile-border"></div>
@@ -124,6 +175,7 @@
                                 </div>
 
                             </div>
+                            <?endif?>
 
                         </div>
                     </div>
@@ -136,3 +188,5 @@
 </body>
 
 </html>
+
+
