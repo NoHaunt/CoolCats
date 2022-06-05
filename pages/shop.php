@@ -7,6 +7,17 @@ if (isset($_GET["Search"])) {
         header("Location: " . "shop.php");
     }
 }
+if(isset($_GET["toCart"])){
+    header("Location: " . "busket.php");
+}
+
+if (isset($_GET["ToLogin"])){
+    header("Location: " . "login.php");
+}
+
+if (isset($_GET["toProfile"])) {
+    header("Location: " . "profile.php");
+}
 
 
 $hostname = 'localhost';
