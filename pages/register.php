@@ -13,14 +13,13 @@ $user_login = $data['login'];
 $new_url = '../index.php';
 $query = "SELECT login FROM users WHERE login = '$user_login'";
 $select = $database->select_query($query);
-if(isset($data['enter']))
-{
+if (isset($data['enter'])) {
     $check = true;
     foreach ($select as $value) {
         if ($value["login"] == $user_login)
             echo 'Такой логин уже занят, но вы можете попробывать ' . $user_login . '228';
-            $check = false;
-            break;
+        $check = false;
+        break;
     }
 
     if ($check) {

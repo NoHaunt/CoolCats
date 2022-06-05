@@ -8,7 +8,7 @@ if (isset($_GET["Search"])) {
     }
 }
 
-if(isset($_GET["toCart"]))
+if (isset($_GET["toCart"]))
     header("Location: " . "busket.php");
 
 if (isset($_GET["ToLogin"]))
@@ -135,7 +135,7 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
                                     </ul>
                                 </div> <span>Найдено <?= $countCats ?> котика</span>
                             </div>
-                            
+
                         </div>
                         <? if ($select) : ?>
 

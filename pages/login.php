@@ -9,10 +9,11 @@ require_once "../classes/DataBase.php";
 $database = DataBase::getInstance($hostname, $username, $password, $dbname);
 
 
-function checkLogin($data, $login, $password){
+function checkLogin($data, $login, $password)
+{
     $password = hash("md5", $password);
 
-    for ($i=0; $i < count($data); $i++) {
+    for ($i = 0; $i < count($data); $i++) {
         if ($data[$i]["login"] == $login and $data[$i]["password"] == $password) {
             if ($data[$i]["is_Admin"])
                 return [$data[$i]["id"], "Admin"];
@@ -43,9 +44,11 @@ function checkLogin($data, $login, $password){
     <form method="post" class="login-form">
         <h1>Авторизация</h1>
         <div class="box">
-            <input name="login" type="text" required> <span data-placeholder="Логин"></span> </div>
+            <input name="login" type="text" required> <span data-placeholder="Логин"></span>
+        </div>
         <div class="box">
-            <input name="password" type="password" required> <span data-placeholder="Пароль"></span> </div>
+            <input name="password" type="password" required> <span data-placeholder="Пароль"></span>
+        </div>
         <input name="submit" type="submit" class="signin" value="Login">
         <div class="bottom-txt">Ещё не зарегистрированы? <a href="register.php">Зарегистрироваться</a></div>
     </form>
@@ -68,8 +71,7 @@ if (isset($_POST['submit'])) {
         $_SESSION['password'] = $_POST['password'];
         $_SESSION['role'] = $role[1];
         header("Location: " . "../index.php");
-    }
-    else
+    } else
         echo "Неправильный ввод данных, проверьте логин или пароль, который вы написали";
 }
 ?>

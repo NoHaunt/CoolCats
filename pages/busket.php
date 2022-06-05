@@ -15,7 +15,7 @@ if (isset($_GET["Search"])) {
     }
 }
 
-if(isset($_GET["toCart"]))
+if (isset($_GET["toCart"]))
     header("Location: " . "busket.php");
 
 if (isset($_GET["ToLogin"]))
@@ -38,8 +38,7 @@ $user_id = $_SESSION['id'];
 
 
 
-if(isset($_GET['buy']))
-{
+if (isset($_GET['buy'])) {
     $query = "UPDATE `orders` SET `purchased`='1' WHERE id_User = $user_id";
     $update = $database->query($query);
 }
@@ -53,14 +52,12 @@ if(isset($_GET['buy']))
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="Keywords" content="<? echo file_get_contents("../file/KeyWords.txt") ?>">
     <meta name="description" content="<? echo file_get_contents("../file/DescriptionSite.txt") ?>">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
     </script>
     <script>
         var toastElList = [].slice.call(document.querySelectorAll('.toast'))
-        var toastList = toastElList.map(function (toastEl) {
+        var toastList = toastElList.map(function(toastEl) {
             return new bootstrap.Toast(toastEl, option)
         })
     </script>
@@ -79,18 +76,14 @@ if(isset($_GET['buy']))
             <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="#"></a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item"> <a href="../index.php"><img class="logo-img" src="../favicon/logo.png">
                                 </a></li>
-                            <li class="nav-item"> <a class="nav-link" aria-current="page"
-                                    href="../index.php">Главная</a> </li>
-                            <li class="nav-item"> <a class="nav-link"
-                                    href="catalog.php">Каталог</a>
+                            <li class="nav-item"> <a class="nav-link" aria-current="page" href="../index.php">Главная</a> </li>
+                            <li class="nav-item"> <a class="nav-link" href="catalog.php">Каталог</a>
                             </li>
                         </ul>
                         <div class="d-flex">
@@ -173,6 +166,14 @@ if(isset($_GET['buy']))
                                                         <?=$value["name"]?>
                                                     </a>
                                                 </div>
+                                            </div>
+                                            <div class="col-md-8 position-relative">
+                                                <div class="border-right"></div>
+                                                <div class="product-price">
+                                                    <span class="product-price-reg"><? echo number_format($value["price"], 0, ",", " ") ?> руб.</span>
+                                                </div> <a href="kotik.php" class="product-title">
+                                                    <?= $value["name"] ?>
+                                                </a>
                                             </div>
                                         </div>
                                     </li>

@@ -65,11 +65,11 @@ if (isset($_POST["addCat"])) {
         VALUES (null, '$name_insert_cat', '$description_cat', $price_cat, '$image_way')");
 }
 
-if (isset($_POST["keyWordsSite"])){
+if (isset($_POST["keyWordsSite"])) {
     file_put_contents("../files/KeyWords.txt", $_POST["KeyWords"]);
 }
 
-if (isset($_POST["descriptionSiteSubmit"])){
+if (isset($_POST["descriptionSiteSubmit"])) {
     file_put_contents("../files/DescriptionSite.txt", $_POST["DescriptionSite"]);
 }
 ?>
@@ -81,8 +81,8 @@ if (isset($_POST["descriptionSiteSubmit"])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="Keywords" content="<?echo file_get_contents("../files/KeyWords.txt")?>"> 
-    <meta name="description" content="<?echo file_get_contents("../files/DescriptionSite.txt")?>">
+    <meta name="Keywords" content="<? echo file_get_contents("../files/KeyWords.txt") ?>">
+    <meta name="description" content="<? echo file_get_contents("../files/DescriptionSite.txt") ?>">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
     </script>
@@ -169,48 +169,50 @@ if (isset($_POST["descriptionSiteSubmit"])){
                                 <div class="col-3">
                                     <input type="text" name="password" class="form-control head-text" placeholder="Новый пароль">
                                 </div>
-                                <div class="col-3"><input type="text" name="passwordCheck" class="form-control head-text" placeholder="Подтвреждение пароля"></div>
+                                <div class="col-3"><input type="text" name="passwordCheck" class="form-control head-text" placeholder="Подтверждение пароля"></div>
                                 <button name="submitPassword" class="head-text btn btn-primary">Сменить пароль</button>
-                                <? if ($_COOKIE['passwordCheck'] == "falsePassword"):?>
+                                <? if ($_COOKIE['passwordCheck'] == "falsePassword") : ?>
                                     <p class="error-change">Ошибка пароли не совпадают</p>
-                                <?endif?>
-                                <button name="exit" class="btn btn-danger head-text">Выйти</button>
+                                <? endif ?>
+                                <div class="form-group">
+                                    <button name="exit" class="btn btn-danger head-text">Выйти</button>
+                                </div>
                             </form>
-                            <?if ($_SESSION['role'] == "Admin"):?>
-                            <div class="admin-panel">
-                                <h5>Панель админа</h5>
-                                <form method="post" class="d-block">
-                                    <div class="profile-border"></div>
-                                    <h5 class="head-text">Изменить метаданные</h5>
-                                    <div class="form-group col-7">
-                                        <textarea class="form-control" name="KeyWords" placeholder="Ключевые слова"></textarea>
-                                    </div>
-                                    <button name="keyWordsSite" class="btn btn-primary head-text">Изменить ключевые слова</button>
-                                    <div class="form-group head-text col-7">
-                                        <textarea class="form-control" name="DescriptionSite" placeholder="Описание сайта"></textarea>
-                                    </div>
-                                    <button name="descriptionSiteSubmit" class="btn btn-primary head-text">Изменить описание</button>
-                                </form>
-                                <form method="post" enctype="multipart/form-data" class="d-block">
-                                    <h5 class="head-text">Добавить нового котика</h5>
-                                    <div class="form-group col-3">
-                                        <label>Название котика</label>
-                                        <input name="nameCat" type="text" class="form-control" placeholder="Наименование котика" required>
-                                    </div>
-                                    <div class="form-group col-7">
-                                        <label>Описание котика</label>
-                                        <textarea name="descriptionCat" class="form-control" name="DescriptionCat" placeholder="Описание котика"></textarea>
-                                    </div>
-                                    <div class="form-group col-3">
-                                        <label>Цена котика</label>
-                                        <input name="priceCat" type="text" class="form-control" name="price" placeholder="Цена котика" required>
-                                    </div>
-                                    <div class="form-group col-3 head-text">
-                                        <label for="exampleFormControlFile1">Example file input</label>
-                                        <input name="imageCat" type="file" class="form-control-file" id="exampleFormControlFile1" name="cat-img" required>
-                                    </div>
-                                    <button name="addCat" class="head-text btn btn-primary">Добавить котика</button>
-                                </form>
+                            <? if ($_SESSION['role'] == "Admin") : ?>
+                                <div class="admin-panel">
+                                    <h5>Панель админа</h5>
+                                    <form method="post" class="d-block">
+                                        <div class="profile-border"></div>
+                                        <h5 class="head-text">Изменить метаданные</h5>
+                                        <div class="form-group col-7">
+                                            <textarea class="form-control" name="KeyWords" placeholder="Ключевые слова"></textarea>
+                                        </div>
+                                        <button name="keyWordsSite" class="btn btn-primary head-text">Изменить ключевые слова</button>
+                                        <div class="form-group head-text col-7">
+                                            <textarea class="form-control" name="DescriptionSite" placeholder="Описание сайта"></textarea>
+                                        </div>
+                                        <button name="descriptionSiteSubmit" class="btn btn-primary head-text">Изменить описание</button>
+                                    </form>
+                                    <form method="post" enctype="multipart/form-data" class="d-block">
+                                        <h5 class="head-text">Добавить нового котика</h5>
+                                        <div class="form-group col-3">
+                                            <label>Название котика</label>
+                                            <input name="nameCat" type="text" class="form-control" placeholder="Наименование котика" required>
+                                        </div>
+                                        <div class="form-group col-7">
+                                            <label>Описание котика</label>
+                                            <textarea name="descriptionCat" class="form-control" name="DescriptionCat" placeholder="Описание котика"></textarea>
+                                        </div>
+                                        <div class="form-group col-3">
+                                            <label>Цена котика</label>
+                                            <input name="priceCat" type="text" class="form-control" name="price" placeholder="Цена котика" required>
+                                        </div>
+                                        <div class="form-group col-3 head-text">
+                                            <label for="exampleFormControlFile1">Example file input</label>
+                                            <input name="imageCat" type="file" class="form-control-file" id="exampleFormControlFile1" name="cat-img" required>
+                                        </div>
+                                        <button name="addCat" class="head-text btn btn-primary">Добавить котика</button>
+                                    </form>
 
                                 </div>
                             <? endif ?>
