@@ -43,7 +43,7 @@
                         <div class="d-flex">
                                 <form>
                                     <input class="form-control me-2" type="search" placeholder="Искать котика" aria-label="Search" name="SearchPlaceHolder">
-                                    <button class="btn btn-outline-light" type="submit" name="Search">Поиск</button>
+                                    <button class="btn btn-outline-light search" type="submit" name="Search">Поиск</button>
                                     <?
                                     session_start();
                                     if (isset($_SESSION['login'])):
@@ -93,6 +93,7 @@
                             <div class="col-3"><input type="text" name="password" class="form-control head-text" placeholder="Подтвреждение пароля"></div>
                             <button class="head-text btn btn-primary">Сменить пароль</button>
                             <p class="error-change">Ошибка пароли не совпадают</p>
+                            <button class="btn btn-danger head-text">Выйти</button>
                             <div class="admin-panel">
                                 <h5>Панель админа</h5>
                                 <div class="profile-border"></div>

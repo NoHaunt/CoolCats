@@ -1,14 +1,13 @@
 <?
 $name_cat = $_GET['SearchPlaceHolder'];
 
-$search = $_GET["Search"];
-
-if (isset($search)){
+if (isset($_GET["Search"])){
     if ($name_cat){
         setcookie("SearchCookie", $name_cat, time()+3600);
         header("Location: " . "pages/shop.php");
     }
 }
+
 if(isset($_GET["toCart"])){
     header("Location: " . "pages/busket.php");
 }
@@ -33,7 +32,7 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
 $name_cat = $_GET['Search'];
 
 if (isset($search)) {
-    if ($name_cat) {    
+    if ($name_cat) {
         $database->select_query("
             SELECT * FROM Kotiki
             WHERE name = $name_cat");
@@ -71,7 +70,11 @@ if (isset($search)) {
                     <div class="d-flex">
                         <form>
                             <input class="form-control me-2" type="search" placeholder="Искать котика" aria-label="Search" name="SearchPlaceHolder">
-                            <button class="btn btn-outline-light seatr" type="submit" name="Search">Поиск</button>
+                            <button class="btn btn-outline-light search" type="submit" name="Search">Поиск</button>
+                            <?
+                            session_start();
+                            if (isset($_SESSION['login'])):
+                            ?>
                             <a href="pages/busket.php"> <button class="btn text-light icon d-flex" name="toCart">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
                                         <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
@@ -82,7 +85,9 @@ if (isset($search)) {
                                     <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
                                 </svg>
                             </button>
+                            <?else:?>
                             <button class="btn btn-outline-light" type="submit" name="ToLogin">Войти</button>
+                            <?endif?>
                         </form>
                     </div>
                 </div>
