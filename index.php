@@ -5,7 +5,6 @@ $search = $_GET["Search"];
 
 if (isset($search)){
     if ($name_cat){
-        echo "!!!!!!!!!!!!";
         setcookie("SearchCookie", $name_cat, time()+3600);
         header("Location: " . "pages/shop.php");
     }
@@ -21,8 +20,6 @@ require_once "classes/DataBase.php";
 $database = DataBase::getInstance($hostname, $username, $password, $dbname);
 
 $name_cat = $_GET['Search'];
-
-
 
 if (isset($search)) {
     if ($name_cat) {
