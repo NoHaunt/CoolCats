@@ -1,15 +1,48 @@
 <?php
+session_start();
+
+if (!$_SESSION["login"]) {
+    header("Location: " . "../index.php");
+    die();
+}
+
+
+$name_cat = $_GET['SearchPlaceHolder'];
+
+if (isset($_GET["Search"])) {
+    if ($name_cat) {
+        setcookie("SearchCookie", $name_cat, time() + 600);
+        header("Location: " . "shop.php");
+    }
+}
+
+if(isset($_GET["toCart"]))
+    header("Location: " . "busket.php");
+
+if (isset($_GET["ToLogin"]))
+    header("Location: " . "login.php");
+
+if (isset($_GET["toProfile"]))
+    header("Location: " . "profile.php");
+
+
 $hostname = 'localhost';
 $username = 'root';
 $password = '';
 $dbname = 'db_kotiki';
 
 require_once "../classes/DataBase.php";
+
+
 $database = DataBase::getInstance($hostname, $username, $password, $dbname);
+
 $user_login = $_SESSION['login'];
+
 $user_id = $database->select_query("
             SELECT id FROM users
             WHERE login = $user_login");
+
+
 if(isset($_GET['buy']))
 {
     $query = "INSERT INTO orders(`id`, `id_user`, `id_Kotik`, `purchased`) VALUES (NULL, '$user_id', '', 1)";
@@ -61,28 +94,30 @@ if(isset($_GET['buy']))
                             <li class="nav-item"> <a class="nav-link" aria-current="page"
                                     href="../index.php">Главная</a> </li>
                             <li class="nav-item"> <a class="nav-link"
-                                    href="http://localhost/CoolCats/pages/shop.php">Каталог</a>
+                                    href="catalog.php">Каталог</a>
                             </li>
                         </ul>
                         <div class="d-flex">
-                            <input class="form-control me-2" type="search" placeholder="Искать котика"
-                                aria-label="Search" name="SearchPlaceHolder">
-                            <button class="btn btn-outline-light search" type="submit" name="Search">Поиск</button>
-                            <button class="btn text-light icon d-flex" name="toCart">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                                    class="bi bi-cart2" viewBox="0 0 16 16">
-                                    <path
-                                        d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
-                                </svg>
-                            </button>
-                            <button class="btn text-light icon d-flex" name="toProfile">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                                    class="bi bi-person-fill" viewBox="0 0 16 16">
-                                    <path
-                                        d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                                </svg>
-                            </button>
-                            <button class="btn btn-outline-light" type="submit" name="ToLogin">Войти</button>
+                            <form>
+                                <input class="form-control me-2" type="search" placeholder="Искать котика" aria-label="Search" name="SearchPlaceHolder">
+                                <button class="btn btn-outline-light search" type="submit" name="Search">Поиск</button>
+                                <?
+                                session_start();
+                                if (isset($_SESSION['login'])):
+                                ?>
+                                    <a href="pages/busket.php"> <button class="btn text-light icon d-flex" name="toCart">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
+                                                <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                                            </svg>
+                                        </button></a>
+                                    <button class="btn text-light icon d-flex" name="toProfile">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                                        </svg>
+                                    </button>
+                                <?else:?>
+                                    <button class="btn btn-outline-light" type="submit" name="ToLogin">Войти</button>
+                                <?endif?>
                             </form>
                         </div>
                     </div>
