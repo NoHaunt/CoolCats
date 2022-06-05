@@ -12,10 +12,7 @@
 <body>
     <form action="loginpage.html" class="login-form">
         <h1>Регистрация</h1>
-        <div class="box">
-            <input type="text"> <span data-placeholder="Имя"></span> </div>
-        <div class="box">
-            <input type="text"> <span data-placeholder="Фамилия"></span> </div>
+        
         <div class="box">
             <input type="text"> <span data-placeholder="Логин"></span> </div>
         <div class="box">

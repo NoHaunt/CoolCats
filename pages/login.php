@@ -1,3 +1,30 @@
+<?
+$hostname = 'localhost';
+$username = 'root';
+$password = '';
+$dbname = 'db_kotiki';
+
+require_once "../classes/DataBase.php";
+
+$database = DataBase::getInstance($hostname, $username, $password, $dbname);
+
+
+function checkLogin($data, $login, $password){
+    $password = hash("md5", $password);
+
+    for ($i=0; $i < count($data); $i++) { 
+        if ($data[$i]["login"] == $login and $data[$i]["password"]) {
+            if ($data[$i]["isAdmin"])
+                return "Admin";
+            else
+                return "User";
+        }
+    }
+
+    return false;
+}
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -11,16 +38,35 @@
 </head>
 
 <body>
-    <form action="loginpage.html" class="login-form">
+    <form method="post" class="login-form">
         <h1>Авторизация</h1>
         <div class="box">
-            <input type="text"> <span data-placeholder="Логин"></span> </div>
+            <input name="login" type="text" required> <span data-placeholder="Логин"></span> </div>
         <div class="box">
-            <input type="password"> <span data-placeholder="Пароль"></span> </div>
-        <input type="submit" class="signin" value="Login">
+            <input name="password" type="password" required> <span data-placeholder="Пароль"></span> </div>
+        <input name="submit" type="submit" class="signin" value="Login">
         <div class="bottom-txt">Ещё не зарегистрированы? <a href="register.php">Зарегистрироваться</a></div>
     </form>
     <script src="../js/auth.js"></script>
 </body>
 
 </html>
+
+<?
+if (isset($_POST['submit'])) {
+    $array_users = $database->select_query("SELECT * FROM users");
+
+    $role = checkLogin($array_users, $_POST['login'], $_POST['password']);
+
+    if ($role) {
+        session_start();
+
+        $_SESSION['login'] = $_POST['login'];
+        $_SESSION['password'] = $_POST['password'];
+        $_SESSION['role'] = $role;
+        header("Location: " . "../index.php");
+    }
+    else
+        echo "Неправильный ввод данных, проверьте логин или пароль, который вы написали";
+}
+?>
