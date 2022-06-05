@@ -73,8 +73,8 @@ if (isset($_POST["addCat"])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="Keywords" content="<? echo file_get_content("../file/KeyWords.txt") ?>">
-    <meta name="description" content="<? echo file_get_content("../file/DescriptionSite.txt") ?>">
+    <meta name="Keywords" content="<? echo file_get_contents("../file/KeyWords.txt") ?>">
+    <meta name="description" content="<? echo file_get_contents("../file/DescriptionSite.txt") ?>">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
     </script>
@@ -168,41 +168,6 @@ if (isset($_POST["addCat"])) {
                                 <? endif ?>
                                 <button name="exit" class="btn btn-danger head-text">Выйти</button>
                             </form>
-<<<<<<< HEAD
-                            <? if ($_SESSION['role'] == "Admin") : ?>
-                                <div class="admin-panel">
-                                    <h5>Панель админа</h5>
-                                    <div class="profile-border"></div>
-                                    <h5 class="head-text">Изменить метаданные</h5>
-                                    <div class="form-group col-7">
-                                        <textarea class="form-control" name="KeyWords" placeholder="Ключевые слова"></textarea>
-                                    </div>
-                                    <button class="btn btn-primary head-text">Изменить ключевые слова</button>
-                                    <div class="form-group head-text col-7">
-                                        <textarea class="form-control" name="DescriptionSite" placeholder="Описание сайта"></textarea>
-                                    </div>
-                                    <button class="btn btn-primary head-text">Изменить описание</button>
-                                    <form method="post" class="d-block">
-                                        <h5 class="head-text">Добавить нового котика</h5>
-                                        <div class="form-group col-3">
-                                            <label>Название котика</label>
-                                            <input type="text" class="form-control" placeholder="Наименование" required>
-                                        </div>
-                                        <div class="form-group col-7">
-                                            <label>Описание котика</label>
-                                            <textarea class="form-control" name="DescriptionCat" placeholder="Описание котика"></textarea>
-                                        </div>
-                                        <div class="form-group col-3">
-                                            <label>Цена котика</label>
-                                            <input type="text" class="form-control" name="price" placeholder="Цена" required>
-                                        </div>
-                                        <div class="form-group col-3 head-text">
-                                            <label for="exampleFormControlFile1">Example file input</label>
-                                            <input type="file" class="form-control-file" id="exampleFormControlFile1" name="cat-img" required>
-                                        </div>
-                                        <button name="submit" class="head-text btn btn-primary">Добавить котика</button>
-                                    </form>
-=======
                             <?if ($_SESSION['role'] == "Admin"):?>
                             <div class="admin-panel">
                                 <h5>Панель админа</h5>
@@ -236,7 +201,6 @@ if (isset($_POST["addCat"])) {
                                     </div>
                                     <button name="addCat" class="head-text btn btn-primary">Добавить котика</button>
                                 </form>
->>>>>>> 875f31f7b67b60ac0c3fa96961177f1f0dc858cd
 
                                 </div>
                             <? endif ?>

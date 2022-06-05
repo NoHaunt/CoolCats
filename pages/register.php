@@ -25,8 +25,8 @@ if (isset($data['enter'])) {
 <head lang="ru" lang="en">
     <title>&#128049;CatRegister&#128049;</title>
     <meta charset="utf-8">
-    <meta name="Keywords" content="<? echo file_get_content("../file/KeyWords.txt") ?>">
-    <meta name="description" content="<? echo file_get_content("../file/DescriptionSite.txt") ?>">
+    <meta name="Keywords" content="<? echo file_get_contents("../files/KeyWords.txt") ?>">
+    <meta name="description" content="<? echo file_get_contents("../files/DescriptionSite.txt") ?>">
     <script src="../vendor/js/jquery-3.4.1.min.js"></script>
     <script src="https://kit.fontawesome.com/0be61fa4f3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/auth.css">
