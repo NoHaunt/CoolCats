@@ -1,0 +1,21 @@
+.profile-container{
+    margin-top:20px;
+    border:1px solid #ddd;
+    border-radius: 5px;
+    padding-bottom: 100px;
+}
+.profile-border{
+    border-bottom: 1px solid #ddd;
+}
+.head-text{
+    margin-top: 20px;
+    
+}
+.admin-panel{
+    margin-top: 40px;
+}
+.error-change{
+    margin-top: 20px;
+    color:red;
+
+}
