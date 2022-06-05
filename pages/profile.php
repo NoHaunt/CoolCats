@@ -65,6 +65,14 @@ if (isset($_POST["addCat"])) {
     $insert = $database->query("INSERT INTO `kotiki`(`id`, `name`, `description`, `price`, `url_picture`)
         VALUES (null, '$name_insert_cat', '$description_cat', $price_cat, '$image_way')");
 }
+
+if (isset($_POST["keyWordsSite"])){
+    file_put_contents("../files/KeyWords.txt", $_POST["KeyWords"]);
+}
+
+if (isset($_POST["descriptionSiteSubmit"])){
+    file_put_contents("../files/DescriptionSite.txt", $_POST["DescriptionSite"]);
+}
 ?>
 
 <!DOCTYPE html>
@@ -74,8 +82,8 @@ if (isset($_POST["addCat"])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="Keywords" content="<?echo file_get_content("../file/KeyWords.txt")?>"> 
-    <meta name="description" content="<?echo file_get_content("../file/DescriptionSite.txt")?>">
+    <meta name="Keywords" content="<?echo file_get_contents("../files/KeyWords.txt")?>"> 
+    <meta name="description" content="<?echo file_get_contents("../files/DescriptionSite.txt")?>">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
     </script>
@@ -172,16 +180,18 @@ if (isset($_POST["addCat"])) {
                             <?if ($_SESSION['role'] == "Admin"):?>
                             <div class="admin-panel">
                                 <h5>Панель админа</h5>
-                                <div class="profile-border"></div>
-                                <h5 class="head-text">Изменить метаданные</h5>
-                                <div class="form-group col-7">
-                                    <textarea class="form-control" name="KeyWords" placeholder="Ключевые слова"></textarea>
-                                </div>
-                                <button class="btn btn-primary head-text">Изменить ключевые слова</button>
-                                <div class="form-group head-text col-7">
-                                    <textarea class="form-control" name="DescriptionSite" placeholder="Описание сайта"></textarea>
-                                </div>
-                                <button class="btn btn-primary head-text">Изменить описание</button>
+                                <form method="post" class="d-block">
+                                    <div class="profile-border"></div>
+                                    <h5 class="head-text">Изменить метаданные</h5>
+                                    <div class="form-group col-7">
+                                        <textarea class="form-control" name="KeyWords" placeholder="Ключевые слова"></textarea>
+                                    </div>
+                                    <button name="keyWordsSite" class="btn btn-primary head-text">Изменить ключевые слова</button>
+                                    <div class="form-group head-text col-7">
+                                        <textarea class="form-control" name="DescriptionSite" placeholder="Описание сайта"></textarea>
+                                    </div>
+                                    <button name="descriptionSiteSubmit" class="btn btn-primary head-text">Изменить описание</button>
+                                </form>
                                 <form method="post" enctype="multipart/form-data" class="d-block">
                                     <h5 class="head-text">Добавить нового котика</h5>
                                     <div class="form-group col-3">
