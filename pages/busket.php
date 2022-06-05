@@ -1,15 +1,20 @@
 <?php
+session_start();
 $hostname = 'localhost';
 $username = 'root';
 $password = '';
 $dbname = 'db_kotiki';
 
 require_once "../classes/DataBase.php";
+
 $database = DataBase::getInstance($hostname, $username, $password, $dbname);
-$user_login = $_SESSION['login'];
-$user_id = $database->select_query("
-            SELECT id FROM users
-            WHERE login = $user_login");
+$user_id = $_SESSION['id'];
+$order = $database->select_query("SELECT * FROM `orders`
+    JOIN kotiki
+        ON orders.id_Kotik = kotiki.id
+    JOIN users
+        ON orders.id_User = users.id
+    WHERE orders.purchased = 0 AND users.id = $user_id");
 if(isset($_GET['buy']))
 {
     $query = "INSERT INTO orders(`id`, `id_user`, `id_Kotik`, `purchased`) VALUES (NULL, '$user_id', '', 1)";
@@ -113,57 +118,39 @@ if(isset($_GET['buy']))
 
                         </div>
                         <ul class="list-group shop-list">
-                            <li class="list-group-item">
-                                <div class="product-box">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="product-img-box">
-                                                <a href="kotik.php"><img class="product-img"
-                                                        src="../img/abis-cat.jpg"></a>
+                            <?
+                            $order = $database->select_query("SELECT * FROM `orders`
+    JOIN kotiki
+        ON orders.id_Kotik = kotiki.id
+    JOIN users
+        ON orders.id_User = users.id
+    WHERE orders.purchased = 0 AND users.id = $user_id");
+                            ?>
+                            <p>
+                                <?print_r($order);?>
+                            </p>
+                                <?foreach ($order as $value){?>
+                                    <li class="list-group-item">
+                                        <div class="product-box">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="product-img-box">
+                                                        <a href="kotik.php"><img class="product-img"
+                                                                src="../img/abis-cat.jpg"></a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-8 position-relative">
+                                                    <div class="border-right"></div>
+                                                    <div class="product-price">
+                                                        <span class="product-price-reg">20 000 руб.</span>
+                                                    </div> <a href="kotik.php" class="product-title">
+                                                        Абисссинский кот
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-8 position-relative">
-                                            <div class="border-right"></div>
-                                            <div class="product-price">
-                                                <span class="product-price-reg">20 000 руб.</span>
-                                            </div> <a href="kotik.php" class="product-title">
-                                                Абисссинский кот
-                                            </a>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="product-box">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="product-img-box">
-                                                <a href="kotik.php"><img class="product-img"
-                                                        src="../img/abis-cat.jpg"></a>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8 position-relative">
-                                            <div class="border-right"></div>
-                                            <div class="product-price">
-                                                <span class="product-price-reg">20 000 руб.</span>
-                                            </div> <a href="kotik.php" class="product-title">
-                                                Абисссинский кот
-                                            </a>
-                                            <div class="product-description">
-                                                <p>Количество: <select name="select-sort" class="select-sort">
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                    </select></p>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </li>
+                                    </li>
+                                <?}?>
                         </ul>
                         <div class="buying">
                             <h5>Мы сделали подсчеты лапками</h5>
