@@ -1,6 +1,6 @@
 <?
 session_start();
-if (!$_SESSION["login"]){
+if (!$_SESSION["login"]) {
     header("Location: " . "../index.php");
     die();
 }
@@ -14,7 +14,7 @@ if (isset($_GET["Search"])) {
     }
 }
 
-if(isset($_GET["toCart"]))
+if (isset($_GET["toCart"]))
     header("Location: " . "busket.php");
 
 if (isset($_GET["ToLogin"]))
@@ -34,17 +34,16 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
 
 if (isset($_POST["submitPassword"])) {
     $check = ($_POST['password'] == $_POST['passwordCheck']);
-    
+
     $password = hash("md5", $_POST['password']);
 
     $login = $_SESSION['login'];
 
-    if($check){
+    if ($check) {
         $insert = $database->query("UPDATE users SET password = '$password' WHERE login = '$login'");
-        setcookie("passwordCheck", "truePassword", time()+60);
-    }
-    else{
-        setcookie("passwordCheck", "falsePassword", time()+60);
+        setcookie("passwordCheck", "truePassword", time() + 60);
+    } else {
+        setcookie("passwordCheck", "falsePassword", time() + 60);
     }
 }
 
@@ -52,6 +51,26 @@ if (isset($_POST["exit"])) {
     session_unset();
     header("Location: " . "../index.php");
     die();
+}
+
+if (isset($_POST["addCat"])) {
+    $name_insert_cat = $_POST["nameCat"];
+    $description_cat = $_POST["descriptionCat"];
+    $price_cat = (int)$_POST["priceCat"];
+    $image_cat = $_FILES['imageCat'];
+    $image_way = 'img/' . $image_cat["name"];
+    copy($image_cat['tmp_name'], "../" .  $image_way);
+
+    $insert = $database->query("INSERT INTO `kotiki`(`id`, `name`, `description`, `price`, `url_picture`)
+        VALUES (null, '$name_insert_cat', '$description_cat', $price_cat, '$image_way')");
+}
+
+if (isset($_POST["keyWordsSite"])){
+    file_put_contents("../files/KeyWords.txt", $_POST["KeyWords"]);
+}
+
+if (isset($_POST["descriptionSiteSubmit"])){
+    file_put_contents("../files/DescriptionSite.txt", $_POST["DescriptionSite"]);
 }
 ?>
 
@@ -62,6 +81,8 @@ if (isset($_POST["exit"])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Keywords" content="<?echo file_get_contents("../files/KeyWords.txt")?>"> 
+    <meta name="description" content="<?echo file_get_contents("../files/DescriptionSite.txt")?>">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
     </script>
@@ -98,13 +119,13 @@ if (isset($_POST["exit"])) {
                             </li>
                         </ul>
                         <div class="d-flex">
-                                <form>
-                                    <input class="form-control me-2" type="search" placeholder="Искать котика" aria-label="Search" name="SearchPlaceHolder">
-                                    <button class="btn btn-outline-light search" type="submit" name="Search">Поиск</button>
-                                    <?
-                                    session_start();
-                                    if (isset($_SESSION['login'])):
-                                    ?>
+                            <form>
+                                <input class="form-control me-2" type="search" placeholder="Искать котика" aria-label="Search" name="SearchPlaceHolder">
+                                <button class="btn btn-outline-light search" type="submit" name="Search">Поиск</button>
+                                <?
+                                session_start();
+                                if (isset($_SESSION['login'])) :
+                                ?>
                                     <a href="pages/busket.php"> <button class="btn text-light icon d-flex" name="toCart">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
                                                 <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
@@ -115,10 +136,10 @@ if (isset($_POST["exit"])) {
                                             <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
                                         </svg>
                                     </button>
-                                    <?else:?>
+                                <? else : ?>
                                     <button class="btn btn-outline-light" type="submit" name="ToLogin">Войти</button>
-                                    <?endif?>
-                                </form>
+                                <? endif ?>
+                            </form>
                         </div>
                     </div>
             </nav>
@@ -150,47 +171,49 @@ if (isset($_POST["exit"])) {
                                 </div>
                                 <div class="col-3"><input type="text" name="passwordCheck" class="form-control head-text" placeholder="Подтвреждение пароля"></div>
                                 <button name="submitPassword" class="head-text btn btn-primary">Сменить пароль</button>
-                                <?if($_COOKIE['passwordCheck'] == "falsePassword"):?>
+                                <? if ($_COOKIE['passwordCheck'] == "falsePassword") : ?>
                                     <p class="error-change">Ошибка пароли не совпадают</p>
-                                <?endif?>
+                                <? endif ?>
                                 <button name="exit" class="btn btn-danger head-text">Выйти</button>
                             </form>
                             <?if ($_SESSION['role'] == "Admin"):?>
                             <div class="admin-panel">
                                 <h5>Панель админа</h5>
-                                <div class="profile-border"></div>
-                                <h5 class="head-text">Изменить метаданные</h5>
-                                <div class="form-group col-7">
-                                    <textarea class="form-control" name="KeyWords" placeholder="Ключевые слова"></textarea>
-                                </div>
-                                <button class="btn btn-primary head-text">Изменить ключевые слова</button>
-                                <div class="form-group head-text col-7">
-                                    <textarea class="form-control" name="DescriptionSite" placeholder="Описание сайта"></textarea>
-                                </div>
-                                <button class="btn btn-primary head-text">Изменить описание</button>
                                 <form method="post" class="d-block">
+                                    <div class="profile-border"></div>
+                                    <h5 class="head-text">Изменить метаданные</h5>
+                                    <div class="form-group col-7">
+                                        <textarea class="form-control" name="KeyWords" placeholder="Ключевые слова"></textarea>
+                                    </div>
+                                    <button name="keyWordsSite" class="btn btn-primary head-text">Изменить ключевые слова</button>
+                                    <div class="form-group head-text col-7">
+                                        <textarea class="form-control" name="DescriptionSite" placeholder="Описание сайта"></textarea>
+                                    </div>
+                                    <button name="descriptionSiteSubmit" class="btn btn-primary head-text">Изменить описание</button>
+                                </form>
+                                <form method="post" enctype="multipart/form-data" class="d-block">
                                     <h5 class="head-text">Добавить нового котика</h5>
                                     <div class="form-group col-3">
                                         <label>Название котика</label>
-                                        <input type="text" class="form-control" placeholder="Наименование" required>
+                                        <input name="nameCat" type="text" class="form-control" placeholder="Наименование котика" required>
                                     </div>
                                     <div class="form-group col-7">
                                         <label>Описание котика</label>
-                                        <textarea class="form-control" name="DescriptionCat" placeholder="Описание котика"></textarea>
+                                        <textarea name="descriptionCat" class="form-control" name="DescriptionCat" placeholder="Описание котика"></textarea>
                                     </div>
                                     <div class="form-group col-3">
                                         <label>Цена котика</label>
-                                        <input type="text" class="form-control" name="price" placeholder="Цена" required>
+                                        <input name="priceCat" type="text" class="form-control" name="price" placeholder="Цена котика" required>
                                     </div>
                                     <div class="form-group col-3 head-text">
                                         <label for="exampleFormControlFile1">Example file input</label>
-                                        <input type="file" class="form-control-file" id="exampleFormControlFile1" name="cat-img" required>
+                                        <input name="imageCat" type="file" class="form-control-file" id="exampleFormControlFile1" name="cat-img" required>
                                     </div>
-                                    <button name="submit" class="head-text btn btn-primary">Добавить котика</button>
+                                    <button name="addCat" class="head-text btn btn-primary">Добавить котика</button>
                                 </form>
 
-                            </div>
-                            <?endif?>
+                                </div>
+                            <? endif ?>
 
                         </div>
                     </div>
@@ -203,5 +226,3 @@ if (isset($_POST["exit"])) {
 </body>
 
 </html>
-
-
