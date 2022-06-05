@@ -52,6 +52,18 @@ if (isset($_POST["exit"])) {
     header("Location: " . "../index.php");
     die();
 }
+
+if (isset($_POST["addCat"])) {
+    $name_insert_cat = $_POST["nameCat"];
+    $description_cat = $_POST["descriptionCat"];
+    $price_cat = (int)$_POST["priceCat"];
+    $image_cat = $_FILES['imageCat'];
+    $image_way = 'img/' . $image_cat["name"];
+    copy($image_cat['tmp_name'], "../" .  $image_way);
+
+    $insert = $database->query("INSERT INTO `kotiki`(`id`, `name`, `description`, `price`, `url_picture`)
+        VALUES (null, '$name_insert_cat', '$description_cat', $price_cat, '$image_way')");
+}
 ?>
 
 <!DOCTYPE html>
@@ -156,6 +168,7 @@ if (isset($_POST["exit"])) {
                                 <? endif ?>
                                 <button name="exit" class="btn btn-danger head-text">Выйти</button>
                             </form>
+<<<<<<< HEAD
                             <? if ($_SESSION['role'] == "Admin") : ?>
                                 <div class="admin-panel">
                                     <h5>Панель админа</h5>
@@ -189,6 +202,41 @@ if (isset($_POST["exit"])) {
                                         </div>
                                         <button name="submit" class="head-text btn btn-primary">Добавить котика</button>
                                     </form>
+=======
+                            <?if ($_SESSION['role'] == "Admin"):?>
+                            <div class="admin-panel">
+                                <h5>Панель админа</h5>
+                                <div class="profile-border"></div>
+                                <h5 class="head-text">Изменить метаданные</h5>
+                                <div class="form-group col-7">
+                                    <textarea class="form-control" name="KeyWords" placeholder="Ключевые слова"></textarea>
+                                </div>
+                                <button class="btn btn-primary head-text">Изменить ключевые слова</button>
+                                <div class="form-group head-text col-7">
+                                    <textarea class="form-control" name="DescriptionSite" placeholder="Описание сайта"></textarea>
+                                </div>
+                                <button class="btn btn-primary head-text">Изменить описание</button>
+                                <form method="post" enctype="multipart/form-data" class="d-block">
+                                    <h5 class="head-text">Добавить нового котика</h5>
+                                    <div class="form-group col-3">
+                                        <label>Название котика</label>
+                                        <input name="nameCat" type="text" class="form-control" placeholder="Наименование котика" required>
+                                    </div>
+                                    <div class="form-group col-7">
+                                        <label>Описание котика</label>
+                                        <textarea name="descriptionCat" class="form-control" name="DescriptionCat" placeholder="Описание котика"></textarea>
+                                    </div>
+                                    <div class="form-group col-3">
+                                        <label>Цена котика</label>
+                                        <input name="priceCat" type="text" class="form-control" name="price" placeholder="Цена котика" required>
+                                    </div>
+                                    <div class="form-group col-3 head-text">
+                                        <label for="exampleFormControlFile1">Example file input</label>
+                                        <input name="imageCat" type="file" class="form-control-file" id="exampleFormControlFile1" name="cat-img" required>
+                                    </div>
+                                    <button name="addCat" class="head-text btn btn-primary">Добавить котика</button>
+                                </form>
+>>>>>>> 875f31f7b67b60ac0c3fa96961177f1f0dc858cd
 
                                 </div>
                             <? endif ?>
