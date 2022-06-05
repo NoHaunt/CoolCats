@@ -41,6 +41,8 @@ $user_id = $_SESSION['id'];
 if(isset($_GET['buy']))
 {
     $query = "UPDATE `orders` SET `purchased`='1' WHERE id_User = $user_id";
+    $update = $database->select_query("
+            UPDATE `orders` SET `purchased`='1' WHERE id_User = $user_id");
 }
 ?>
 <!DOCTYPE html>
