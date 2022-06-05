@@ -17,7 +17,10 @@
     public function select_query($sql_query){
         $answer = mysqli_query($this->conn, $sql_query);
 
-        $result = mysqli_fetch_array($answer, MYSQLI_ASSOC);
+        if (!$answer)
+            return false;
+
+        $result = mysqli_fetch_all($answer, MYSQLI_ASSOC);
         return $result;
     }
 

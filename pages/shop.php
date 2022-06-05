@@ -1,3 +1,14 @@
+<?
+$hostname = 'localhost';
+$username = 'root';
+$password = '';
+$dbname = 'db_kotiki';
+
+require_once "../classes/DataBase.php";
+
+$database = DataBase::getInstance($hostname, $username, $password, $dbname);
+?>
+
 <!Doctype html>
 <html>
 
@@ -71,6 +82,18 @@
                 </div>
             </div>
             <div class="container">
+                <?
+                $searchCat = $_COOKIE['SearchCookie'];
+                $countCats = 0;
+                $select = false;
+                if($searchCat){
+                    $select = $database->select_query("
+                        SELECT * FROM Kotiki");
+
+                    if ($select)
+                        $countCats = count($select);
+                }
+                ?>
                 <div class="row">
                     <div class="col-12">
                         <div class="sort-box">
@@ -80,7 +103,7 @@
 
                                         <li><a class="sort-nav-link active" data-toggle="tab" href="#"><i class="fas fa-list"></i></a></li>
                                     </ul>
-                                </div> <span>Найдено 4 котика</span>
+                                </div> <span>Найдено <?=$countCats?> котика</span>
                             </div>
                             <div class="sort-box-right"> <span>Сортировать:</span>
                                 <div class="sort-box-option">
@@ -93,24 +116,26 @@
                                 </div>
                             </div>
                         </div>
+                        <?if($select):?>
                         <ul class="list-group shop-list">
+                            <?foreach($select as $cat):?>
                             <li class="list-group-item">
                                 <div class="product-box">
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="product-img-box">
-                                                <a href="kotik.php"><img class="product-img" src="../img/abis-cat.jpg"></a>
+                                                <a href="kotik.php"><img class="product-img" src="../<?=$cat["url_picture"]?>"></a>
                                             </div>
                                         </div>
                                         <div class="col-md-5 position-relative">
                                             <div class="border-right"></div>
                                             <div class="product-price">
-                                                <span class="product-price-reg">20 000 руб.</span>
+                                                <span class="product-price-reg"><?echo number_format($cat["price"], 0, ",", " ");?> руб.</span>
                                             </div> <a href="kotik.php" class="product-title">
-                                                Абисссинский кот
+                                                <?=$cat["name"]?>
                                             </a>
                                             <div class="product-description">
-                                                <p>Кот блять ахуенный</p>
+                                                <p><?=$cat["description"]?></p>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
@@ -124,7 +149,9 @@
                                     </div>
                                 </div>
                             </li>
+                            <?endforeach?>
                         </ul>
+                        <?endif?>
                         <div class="page-pagination"> <span>Показываются 4 котика из 13</span>
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination">
