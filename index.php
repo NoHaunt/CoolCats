@@ -1,5 +1,3 @@
-<!Doctype html>
-<html>
 <?
 $hostname = 'localhost';
 $username = 'root';
@@ -9,7 +7,23 @@ $dbname = 'db_kotiki';
 require_once "classes/DataBase.php";
 
 $database = DataBase::getInstance($hostname, $username, $password, $dbname);
+
+$name_cat = $_GET['Search'];
+
+
+
+if(isset($search)){
+    if ($name_cat){
+        $database->select_query("
+            SELECT * FROM Kotiki
+            WHERE name = $name_cat")
+    }
+}
+
 ?>
+<!Doctype html>
+<html>
+
 
 <head>
     <meta charset="utf-8">
@@ -37,6 +51,7 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
                         </li>
                     </ul>
                     <div class="d-flex">
+                        <form>
                         <input class="form-control me-2" type="search" placeholder="Искать котика" aria-label="Search" name="SearchPlaceHolder">
                         <button class="btn btn-outline-light" type="submit" name="Search">Поиск</button>
                         <button class="btn text-light icon d-flex" name="toCart">
