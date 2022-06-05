@@ -15,9 +15,9 @@ function checkLogin($data, $login, $password){
     for ($i=0; $i < count($data); $i++) {
         if ($data[$i]["login"] == $login and $data[$i]["password"] == $password) {
             if ($data[$i]["is_Admin"])
-                return "Admin";
+                return [$data[$i]["id"], "Admin"];
             else
-                return "User";
+                return [$data[$i]["id"], "User"];
         }
     }
 
@@ -63,9 +63,10 @@ if (isset($_POST['submit'])) {
     if ($role) {
         session_start();
 
+        $_SESSION['id'] = $role[0];
         $_SESSION['login'] = $_POST['login'];
         $_SESSION['password'] = $_POST['password'];
-        $_SESSION['role'] = $role;
+        $_SESSION['role'] = $role[1];
         header("Location: " . "../index.php");
     }
     else

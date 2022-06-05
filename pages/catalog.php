@@ -1,4 +1,7 @@
 <?
+session_start();
+
+
 $name_cat = $_GET['SearchPlaceHolder'];
 
 if (isset($_GET["Search"])) {
@@ -36,6 +39,7 @@ $dbname = 'db_kotiki';
 require_once "../classes/DataBase.php";
 
 $database = DataBase::getInstance($hostname, $username, $password, $dbname);
+
 ?>
 
 <!Doctype html>
@@ -142,38 +146,38 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
                         </div>
                         <?if($select):?>
                         <ul class="list-group shop-list">
-                            <?foreach($select as $cat):?>
+                            <?for($i=0; $i < count($select); $i++):?>
                             <li class="list-group-item">
-                                <div class="product-box">
+                                <form class="product-box d-block">
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="product-img-box">
-                                                <a href="#"><img class="product-img" src="../<?=$cat["url_picture"]?>"></a>
+                                                <a href="#"><img class="product-img" src="../<?=$select[$i]["url_picture"]?>"></a>
                                             </div>
                                         </div>
                                         <div class="col-md-5 position-relative">
                                             <div class="border-right"></div>
                                             <div class="product-price">
-                                                <span class="product-price-reg"><?echo number_format($cat["price"], 0, ",", " ");?> руб.</span>
+                                                <span class="product-price-reg"><?echo number_format($select[$i]["price"], 0, ",", " ");?> руб.</span>
                                             </div> <a href="#" class="product-title">
-                                                <?=$cat["name"]?>
+                                                <?=$select[$i]["name"]?>
                                             </a>
                                             <div class="product-description">
-                                                <p><?=$cat["description"]?></p>
+                                                <p><?=$select[$i]["description"]?></p>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <ul class="shop-list-link">
                                                 <li>
-                                                    <button class="btn btn-outline-primary">Добавить в корзину</button>
+                                                    <button value="<?=$i?>" name="add_in_busket" class="btn btn-outline-primary">Добавить в корзину</button>
                                                 </li>
                                                 <li><a href="#" class="Quick-view"><i class="far fa-eye"></i>Просмотр</a></li>
                                             </ul>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
                             </li>
-                            <?endforeach?>
+                            <?endfor?>
                         </ul>
                         <?endif?>
                         
@@ -188,3 +192,12 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
 </body>
 
 </html>
+
+<?
+if (isset($_GET["add_in_busket"])) {
+    $index = $_GET["add_in_busket"];
+
+    $id_cat_in_busket = $select[$index]['id'];
+    $id_user = $_SESSION["id"];
+    $database->query("INSERT INTO `orders`(`id`, `id_User`, `id_Kotik`, `purchased`) VALUES (null, $id_user, $id_cat_in_busket, 0)");
+}?>
