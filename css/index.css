@@ -24,8 +24,11 @@
 .b-100 {
     font-weight: 300;
 }
+form{
+    display: inherit ;
+}
 .carousel-container{
-    height:700px;
+    height:600px;
 }
 @media screen and (max-width: 1000px){
     .carousel-container{
