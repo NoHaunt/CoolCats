@@ -130,25 +130,25 @@ if(isset($_GET['buy']))
                 </div>
             </div>
             <div class="container">
+                <?
+                $user_id = $_SESSION['id'];
+                $order = $database->select_query("
+                    SELECT * FROM `orders`
+                    JOIN kotiki
+                        ON orders.id_Kotik = kotiki.id
+                    JOIN users
+                        ON orders.id_User = users.id
+                    WHERE orders.purchased = 0 AND users.id = $user_id");
+                ?>
                 <div class="row">
                     <div class="col-12">
                         <div class="sort-box">
                             <div class="sort-box-left">
-                                <span>Вы хотите купить 2 котика</span>
+                                <span>Вы хотите купить <?=count($order)?> котика</span>
                             </div>
 
                         </div>
                         <ul class="list-group shop-list">
-                            <?
-                            $user_id = $_SESSION['id'];
-                            $order = $database->select_query("
-                                SELECT * FROM `orders`
-                                JOIN kotiki
-                                    ON orders.id_Kotik = kotiki.id
-                                JOIN users
-                                    ON orders.id_User = users.id
-                                WHERE orders.purchased = 0 AND users.id = $user_id");
-                            ?>
                                 <?foreach ($order as $value):?>
                                     <li class="list-group-item">
                                         <div class="product-box">
