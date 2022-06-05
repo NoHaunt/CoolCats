@@ -124,16 +124,7 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
                                     </ul>
                                 </div> <span>Найдено <?= $countCats ?> котика</span>
                             </div>
-                            <div class="sort-box-right"> <span>Сортировать:</span>
-                                <div class="sort-box-option">
-                                    <label class="select-sort-arrow">
-                                        <select name="select-sort" class="select-sort">
-                                            <option value="1">От А до Я</option>
-                                            <option value="2">От Я до А</option>
-                                        </select>
-                                    </label>
-                                </div>
-                            </div>
+                            
                         </div>
                         <? if ($select) : ?>
 

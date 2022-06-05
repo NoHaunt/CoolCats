@@ -34,7 +34,7 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item"> <a href="index.php"><img class="logo-img" src="../favicon/logo.png">
+                            <li class="nav-item"> <a href="../index.php"><img class="logo-img" src="../favicon/logo.png">
                                 </a></li>
                             <li class="nav-item"> <a class="nav-link" aria-current="page" href="../index.php">Главная</a> </li>
                             <li class="nav-item"> <a class="nav-link" href="http://localhost/CoolCats/pages/shop.php">Каталог</a>
