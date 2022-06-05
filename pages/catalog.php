@@ -99,16 +99,12 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
             </div>
             <div class="container">
                 <?
-                $searchCat = $_COOKIE['SearchCookie'];
                 $countCats = 0;
-                $select = false;
-                if($searchCat){
-                    $select = $database->select_query("
-                        SELECT * FROM Kotiki");
+                $select = $database->select_query("
+                    SELECT * FROM Kotiki");
 
-                    if ($select)
-                        $countCats = count($select);
-                }
+                if ($select)
+                    $countCats = count($select);
                 ?>
                 <div class="row">
                     <div class="col-12">

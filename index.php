@@ -16,6 +16,10 @@ if (isset($_GET["ToLogin"])){
     header("Location: " . "pages/login.php");
 }
 
+if (isset($_GET["toProfile"])) {
+    header("Location: " . "pages/profile.php");
+}
+
 $hostname = 'localhost';
 $username = 'root';
 $password = '';
