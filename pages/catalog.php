@@ -103,7 +103,7 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
 
                                         <li><a class="sort-nav-link active" data-toggle="tab" href="#"><i class="fas fa-list"></i></a></li>
                                     </ul>
-                                </div> <span>Найдено <?=$countCats?> котика</span>
+                                </div> <span>Всего <?=$countCats?> кульных котика</span>
                             </div>
                             <div class="sort-box-right"> <span>Сортировать:</span>
                                 <div class="sort-box-option">

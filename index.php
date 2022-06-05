@@ -5,7 +5,6 @@ $search = $_GET["Search"];
 
 if (isset($search)){
     if ($name_cat){
-        echo "!!!!!!!!!!!!";
         setcookie("SearchCookie", $name_cat, time()+3600);
         header("Location: " . "pages/shop.php");
     }
@@ -21,8 +20,6 @@ require_once "classes/DataBase.php";
 $database = DataBase::getInstance($hostname, $username, $password, $dbname);
 
 $name_cat = $_GET['Search'];
-
-
 
 if (isset($search)) {
     if ($name_cat) {
@@ -156,8 +153,7 @@ if (isset($search)) {
                                     </div>
                                     <div class="card-body">
                                         <h5 class="card-title">Мейн-кун</h5>
-                                        <p class="card-text" style="text-align:center;"><span class="price-del">85 000
-                                                руб.</span>
+                                        <p class="card-text" style="text-align:center;">
                                             <span class="price-reg">
                                                 <? echo number_format($select[0]["price"], 0, ",", " ") ?> руб.
                                             </span>
@@ -178,8 +174,7 @@ if (isset($search)) {
                                     </div>
                                     <div class="card-body">
                                         <h5 class="card-title">Британская золотая шиншилла</h5>
-                                        <p class="card-text" style="text-align:center;"><span class="price-del">30 000
-                                                руб.</span> <span class="price-reg">
+                                        <p class="card-text" style="text-align:center;"><span class="price-reg">
                                                 <? echo number_format($select[0]["price"], 0, ",", " ") ?> руб.</span></p>
                                     </div>
                                 </div>
@@ -197,8 +192,7 @@ if (isset($search)) {
                                     </div>
                                     <div class="card-body">
                                         <h5 class="card-title">Абиссинский котенок</h5>
-                                        <p class="card-text" style="text-align:center;"><span class="price-del">50 000
-                                                руб.</span> <span class="price-reg">
+                                        <p class="card-text" style="text-align:center;"> <span class="price-reg">
                                                 <? echo number_format($select[0]["price"], 0, ",", " ") ?> руб.</span></p>
                                     </div>
                                 </div>
@@ -216,8 +210,7 @@ if (isset($search)) {
                                     </div>
                                     <div class="card-body">
                                         <h5 class="card-title">Шотландский котенок</h5>
-                                        <p class="card-text" style="text-align:center;"><span class="price-del">20 000
-                                                руб.</span> <span class="price-reg">
+                                        <p class="card-text" style="text-align:center;"> <span class="price-reg">
                                                 <? echo number_format($select[0]["price"], 0, ",", " ") ?> руб.</span></p>
                                     </div>
                                 </div>
