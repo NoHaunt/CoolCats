@@ -6,7 +6,6 @@ if (!$_SESSION["login"]) {
     die();
 }
 
-
 $name_cat = $_GET['SearchPlaceHolder'];
 
 if (isset($_GET["Search"])) {
@@ -33,15 +32,7 @@ $dbname = 'db_kotiki';
 
 require_once "../classes/DataBase.php";
 
-
 $database = DataBase::getInstance($hostname, $username, $password, $dbname);
-
-$user_login = $_SESSION['login'];
-
-$user_id = $database->select_query("
-            SELECT id FROM users
-            WHERE login = $user_login");
-
 
 if(isset($_GET['buy']))
 {
@@ -148,57 +139,38 @@ if(isset($_GET['buy']))
 
                         </div>
                         <ul class="list-group shop-list">
-                            <li class="list-group-item">
-                                <div class="product-box">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="product-img-box">
-                                                <a href="kotik.php"><img class="product-img"
-                                                        src="../img/abis-cat.jpg"></a>
+                            <?
+                            $user_id = $_SESSION['id'];
+                            $order = $database->select_query("
+                                SELECT * FROM `orders`
+                                JOIN kotiki
+                                    ON orders.id_Kotik = kotiki.id
+                                JOIN users
+                                    ON orders.id_User = users.id
+                                WHERE orders.purchased = 0 AND users.id = $user_id");
+                            ?>
+                                <?foreach ($order as $value):?>
+                                    <li class="list-group-item">
+                                        <div class="product-box">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="product-img-box">
+                                                        <a href="kotik.php"><img class="product-img"
+                                                                src="../<?=$value["url_picture"]?>"></a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-8 position-relative">
+                                                    <div class="border-right"></div>
+                                                    <div class="product-price">
+                                                        <span class="product-price-reg"><?echo number_format($value["price"], 0, ",", " ")?> руб.</span>
+                                                    </div> <a href="kotik.php" class="product-title">
+                                                        <?=$value["name"]?>
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-8 position-relative">
-                                            <div class="border-right"></div>
-                                            <div class="product-price">
-                                                <span class="product-price-reg">20 000 руб.</span>
-                                            </div> <a href="kotik.php" class="product-title">
-                                                Абисссинский кот
-                                            </a>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="product-box">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="product-img-box">
-                                                <a href="kotik.php"><img class="product-img"
-                                                        src="../img/abis-cat.jpg"></a>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8 position-relative">
-                                            <div class="border-right"></div>
-                                            <div class="product-price">
-                                                <span class="product-price-reg">20 000 руб.</span>
-                                            </div> <a href="kotik.php" class="product-title">
-                                                Абисссинский кот
-                                            </a>
-                                            <div class="product-description">
-                                                <p>Количество: <select name="select-sort" class="select-sort">
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                    </select></p>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </li>
+                                    </li>
+                                <?endforeach?>
                         </ul>
                         <div class="buying">
                             <h5>Мы сделали подсчеты лапками</h5>
