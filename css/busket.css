@@ -1,0 +1,15 @@
+.border-right{
+    border-right: 0;
+}
+.product-img-box a {
+    height: 150px ;
+    width:150px;
+    margin:auto;
+}
+.buying{
+    margin-top: 20px;
+}
+.price {
+    color:#0063d1;
+    font-weight: 500;
+}

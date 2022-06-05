@@ -124,18 +124,38 @@
                                     </div>
                                 </div>
                             </li>
+                            <li class="list-group-item">
+                                <div class="product-box">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="product-img-box">
+                                                <a href="kotik.php"><img class="product-img" src="../img/abis-cat.jpg"></a>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5 position-relative">
+                                            <div class="border-right"></div>
+                                            <div class="product-price">
+                                                <span class="product-price-reg">20 000 руб.</span>
+                                            </div> <a href="kotik.php" class="product-title">
+                                                Абисссинский кот
+                                            </a>
+                                            <div class="product-description">
+                                                <p>Кот блять ахуенный</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <ul class="shop-list-link">
+                                                <li>
+                                                    <button class="btn btn-outline-primary">Добавить в корзину</button>
+                                                </li>
+                                                <li><a href="kotik.php" class="Quick-view"><i class="far fa-eye"></i>Просмотр</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
                         </ul>
-                        <div class="page-pagination"> <span>Показываются 4 котика из 13</span>
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination">
-                                    <li class="page-item disabled"><a class="page-link" href="#">Назад</a></li>
-                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">Далее</a></li>
-                                </ul>
-                            </nav>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
