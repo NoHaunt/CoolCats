@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июн 05 2022 г., 19:03
+-- Время создания: Июн 05 2022 г., 21:35
 -- Версия сервера: 5.6.51-log
 -- Версия PHP: 7.1.33
 
@@ -44,7 +44,8 @@ INSERT INTO `kotiki` (`id`, `name`, `description`, `price`, `url_picture`) VALUE
 (3, 'Мейн-кун', '', 65000, 'img/Main-Kun.jpg'),
 (4, 'Британская золотая шиншилла', '', 25000, 'img/britain-gold.jpg'),
 (5, 'Шотландский котенок', '', 15000, 'img/scot-cat.jpg'),
-(6, 'Селкирк-рекс', '', 5000, 'img/Selcirk-racs.jpg');
+(6, 'Селкирк-рекс', '', 5000, 'img/Selcirk-racs.jpg'),
+(15, 'ШтормСпилит', 'Фотографирую закат', 228, 'img/stormCats.jpg');
 
 -- --------------------------------------------------------
 
@@ -58,6 +59,13 @@ CREATE TABLE `orders` (
   `id_Kotik` int(11) NOT NULL,
   `purchased` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `orders`
+--
+
+INSERT INTO `orders` (`id`, `id_User`, `id_Kotik`, `purchased`) VALUES
+(4, 1, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -111,13 +119,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `kotiki`
 --
 ALTER TABLE `kotiki`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT для таблицы `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
