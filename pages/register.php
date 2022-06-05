@@ -9,16 +9,20 @@ require_once "../classes/Regi.php";
 
 
 $data = $_POST;
+$user_login = $data['login'];
 $new_url = '../index.php';
-
+$query = "SELECT login FROM users WHERE login = '$user_login'";
 if(isset($data['enter']))
 {
-    $check_regi = new Regi($database);
-    if($check_regi->registration($data) == 1)
-        header('Location: '. $new_url);
-    else
-        echo 'Пароли должны быть одинаковыми';
-
+    if($data['login'] == $employed)
+        echo 'Такой логин уже занят, но вы можете попробывать ' . $user_login . '228';
+    else {
+        $check_regi = new Regi($database);
+        if ($check_regi->registration($data) == 1)
+            header('Location: ' . $new_url);
+        else
+            echo 'Пароли должны быть одинаковыми';
+    }
 }
 ?>
 <!DOCTYPE html>

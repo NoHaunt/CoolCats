@@ -1,3 +1,20 @@
+<?php
+$hostname = 'localhost';
+$username = 'root';
+$password = '';
+$dbname = 'db_kotiki';
+
+require_once "../classes/DataBase.php";
+$database = DataBase::getInstance($hostname, $username, $password, $dbname);
+$user_login = $_SESSION['login'];
+$user_id = $database->select_query("
+            SELECT id FROM users
+            WHERE login = $user_login");
+if(isset($_GET['buy']))
+{
+    $query = "INSERT INTO orders(`id`, `id_user`, `id_Kotik`, `purchased`) VALUES (NULL, '$user_id', '', 1)";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -110,14 +127,6 @@
                                             </div> <a href="kotik.php" class="product-title">
                                                 Абисссинский кот
                                             </a>
-                                            <div class="product-description">
-                                                <p>Количество: <select name="select-sort" class="select-sort">
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                    </select></p>
-                                            </div>
                                         </div>
 
 
@@ -160,7 +169,7 @@
                                 купить?</p>
                         </div>
                         <form class="buy-form">
-                            <button class="btn btn-primary">Да Да Да Купить!</button>
+                            <button class="btn btn-primary" name="buy">Да Да Да Купить!</button>
                         </form>
 
                     </div>

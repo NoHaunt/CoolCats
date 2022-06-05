@@ -88,7 +88,7 @@
                                 Абисссинский кот
                             </a>
                             <div class="product-description">
-                                <p>Кот блять ахуенный</p>
+                                <p>Просто нормальный кот.</p>
                             </div>
                         </div>
                         <div class="col-md-3">
