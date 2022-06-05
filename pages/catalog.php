@@ -1,16 +1,4 @@
 <?
-$name_cat = $_GET['SearchPlaceHolder'];
-
-$search = $_GET["Search"];
-
-if (isset($search)){
-    if ($name_cat){
-        setcookie("SearchCookie", $name_cat, time()+600);
-        header("Location: " . "shop.php");
-    }
-}
-
-
 $hostname = 'localhost';
 $username = 'root';
 $password = '';
@@ -60,7 +48,6 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
                             </li>
                         </ul>
                         <div class="d-flex">
-                            <form>
                             <input class="form-control me-2" type="search" placeholder="Искать котика" aria-label="Search" name="SearchPlaceHolder">
                             <button class="btn btn-outline-light" type="submit" name="Search">Поиск</button>
                             <a href="busket.php"> <button class="btn text-light icon d-flex" name="toCart">
@@ -101,8 +88,7 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
                 $select = false;
                 if($searchCat){
                     $select = $database->select_query("
-                        SELECT * FROM Kotiki
-                            WHERE name = '$searchCat'");
+                        SELECT * FROM Kotiki");
 
                     if ($select)
                         $countCats = count($select);
@@ -133,38 +119,36 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
                         <?if($select):?>
                         <ul class="list-group shop-list">
                             <?foreach($select as $cat):?>
-                                <li class="list-group-item">
-                                    <form>
-                                    <div class="product-box">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="product-img-box">
-                                                    <a href="#"><img class="product-img" src="../<?=$cat["url_picture"]?>"></a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-5 position-relative">
-                                                <div class="border-right"></div>
-                                                <div class="product-price">
-                                                    <span class="product-price-reg"><?echo number_format($cat["price"], 0, ",", " ");?> руб.</span>
-                                                </div> <a name="detailCat" href="kotik.php" class="product-title">
-                                                    <?=$cat["name"]?>
-                                                </a>
-                                                <div class="product-description">
-                                                    <p><?=$cat["description"]?></p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <ul class="shop-list-link">
-                                                    <li>
-                                                        <button class="btn btn-outline-primary">Добавить в корзину</button>
-                                                    </li>
-                                                    <li><a href="kotik.php" class="Quick-view"><i class="far fa-eye"></i>Просмотр</a></li>
-                                                </ul>
+                            <li class="list-group-item">
+                                <div class="product-box">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="product-img-box">
+                                                <a href="kotik.php"><img class="product-img" src="../<?=$cat["url_picture"]?>"></a>
                                             </div>
                                         </div>
+                                        <div class="col-md-5 position-relative">
+                                            <div class="border-right"></div>
+                                            <div class="product-price">
+                                                <span class="product-price-reg"><?echo number_format($cat["price"], 0, ",", " ");?> руб.</span>
+                                            </div> <a href="kotik.php" class="product-title">
+                                                <?=$cat["name"]?>
+                                            </a>
+                                            <div class="product-description">
+                                                <p><?=$cat["description"]?></p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <ul class="shop-list-link">
+                                                <li>
+                                                    <button class="btn btn-outline-primary">Добавить в корзину</button>
+                                                </li>
+                                                <li><a href="kotik.php" class="Quick-view"><i class="far fa-eye"></i>Просмотр</a></li>
+                                            </ul>
+                                        </div>
                                     </div>
-                                    </form>
-                                </li>
+                                </div>
+                            </li>
                             <?endforeach?>
                         </ul>
                         <?endif?>
