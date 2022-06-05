@@ -7,17 +7,6 @@ if (isset($_GET["Search"])) {
         header("Location: " . "shop.php");
     }
 }
-if(isset($_GET["toCart"])){
-    header("Location: " . "busket.php");
-}
-
-if (isset($_GET["ToLogin"])){
-    header("Location: " . "login.php");
-}
-
-if (isset($_GET["toProfile"])) {
-    header("Location: " . "profile.php");
-}
 
 if(isset($_GET["toCart"]))
     header("Location: " . "busket.php");
@@ -85,9 +74,9 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
                                 <button class="btn btn-outline-light search" type="submit" name="Search">Поиск</button>
                                 <?
                                 session_start();
-                                if (isset($_SESSION['login'])):
+                                if (isset($_SESSION['login'])) :
                                 ?>
-                                    <a href="pages/busket.php"> <button class="btn text-light icon d-flex" name="toCart">
+                                    <a href="busket.php"> <button class="btn text-light icon d-flex" name="toCart">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
                                                 <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
                                             </svg>
@@ -97,9 +86,9 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
                                             <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
                                         </svg>
                                     </button>
-                                <?else:?>
+                                <? else : ?>
                                     <button class="btn btn-outline-light" type="submit" name="ToLogin">Войти</button>
-                                <?endif?>
+                                <? endif ?>
                             </form>
                         </div>
                     </div>
@@ -151,32 +140,32 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
                         <? if ($select) : ?>
 
                             <ul class="list-group shop-list">
-                                <? foreach ($select as $cat) : ?>
+                                <?for($i=0; $i < count($select); $i++):?>
                                     <li class="list-group-item">
 
                                         <div class="product-box">
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <div class="product-img-box">
-                                                        <a href="#"><img class="product-img" src="../<?= $cat["url_picture"] ?>"></a>
+                                                        <a href="#"><img class="product-img" src="../<?=$select[$i]["url_picture"] ?>"></a>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-5 position-relative">
                                                     <div class="border-right"></div>
                                                     <div class="product-price">
-                                                        <span class="product-price-reg"><? echo number_format($cat["price"], 0, ",", " "); ?> руб.</span>
+                                                        <span class="product-price-reg"><? echo number_format($select[$i]["price"], 0, ",", " "); ?> руб.</span>
                                                     </div> <a name="detailCat" href="#" class="product-title">
-                                                        <?= $cat["name"] ?>
+                                                        <?=$select[$i]["name"];?>
                                                     </a>
                                                     <div class="product-description">
-                                                        <p><?= $cat["description"] ?></p>
+                                                        <p><?=$select[$i]["description"] ?></p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <ul class="shop-list-link">
                                                         <li>
-                                                            <form>
-                                                                <button class="btn btn-outline-primary">Добавить в корзину</button>
+                                                            <form method="post">
+                                                                <button value="<?=$i?>" name="add_in_busket" class="btn btn-outline-primary">Добавить в корзину</button>
                                                             </form>
                                                         </li>
                                                         <li><a href="#" class="Quick-view"><i class="far fa-eye"></i>Просмотр</a></li>
@@ -186,10 +175,9 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
                                         </div>
 
                                     </li>
-                                <? endforeach ?>
+                                <?endfor?>
                             </ul>
-                        <? endif ?>
-
+                        <?endif?>
                     </div>
                 </div>
             </div>
@@ -201,3 +189,13 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
 </body>
 
 </html>
+
+<?
+if (isset($_POST["add_in_busket"])) {
+    $index = $_POST["add_in_busket"];
+
+    $id_cat_in_busket = $select[$index]['id'];
+    $id_user = $_SESSION["id"];
+    $database->query("INSERT INTO `orders`(`id`, `id_User`, `id_Kotik`, `purchased`) VALUES (null, $id_user, $id_cat_in_busket, 0)");
+}
+?>

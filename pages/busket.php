@@ -41,8 +41,7 @@ $user_id = $_SESSION['id'];
 if(isset($_GET['buy']))
 {
     $query = "UPDATE `orders` SET `purchased`='1' WHERE id_User = $user_id";
-    $update = $database->select_query("
-            UPDATE `orders` SET `purchased`='1' WHERE id_User = $user_id");
+    $update = $database->query($query);
 }
 ?>
 <!DOCTYPE html>
@@ -100,9 +99,9 @@ if(isset($_GET['buy']))
                                 <button class="btn btn-outline-light search" type="submit" name="Search">Поиск</button>
                                 <?
                                 session_start();
-                                if (isset($_SESSION['login'])):
+                                if (isset($_SESSION['login'])) :
                                 ?>
-                                    <a href="pages/busket.php"> <button class="btn text-light icon d-flex" name="toCart">
+                                    <a href="busket.php"> <button class="btn text-light icon d-flex" name="toCart">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
                                                 <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
                                             </svg>
@@ -112,9 +111,9 @@ if(isset($_GET['buy']))
                                             <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
                                         </svg>
                                     </button>
-                                <?else:?>
+                                <? else : ?>
                                     <button class="btn btn-outline-light" type="submit" name="ToLogin">Войти</button>
-                                <?endif?>
+                                <? endif ?>
                             </form>
                         </div>
                     </div>
@@ -155,6 +154,7 @@ if(isset($_GET['buy']))
 
                         </div>
                         <ul class="list-group shop-list">
+                                <?$sum = 0?>
                                 <?foreach ($order as $value):?>
                                     <li class="list-group-item">
                                         <div class="product-box">
@@ -176,11 +176,12 @@ if(isset($_GET['buy']))
                                             </div>
                                         </div>
                                     </li>
+                                <?$sum += $value["price"];?>
                                 <?endforeach?>
                         </ul>
                         <div class="buying">
                             <h5>Мы сделали подсчеты лапками</h5>
-                            <p>Эти классные котики обойдутсвя вам <span class="price">40 000 руб.</span> Хотите их
+                            <p>Эти классные котики обойдутсвя вам <span class="price"><?echo number_format($sum, 0, ",", " ")?> руб.</span> Хотите их
                                 купить?</p>
                         </div>
                         <form class="buy-form">
