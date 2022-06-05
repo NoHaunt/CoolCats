@@ -19,8 +19,6 @@ $dbname = 'db_kotiki';
 require_once "classes/DataBase.php";
 
 $database = DataBase::getInstance($hostname, $username, $password, $dbname);
-<<<<<<< HEAD
-=======
 
 $name_cat = $_GET['Search'];
 
@@ -33,8 +31,6 @@ if (isset($search)) {
             WHERE name = $name_cat");
     }
 }
-
->>>>>>> f4a62b7027ad1c8ee3ec2c5396317d9f27205bc2
 ?>
 <!Doctype html>
 <html>
