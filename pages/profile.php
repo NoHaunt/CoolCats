@@ -1,3 +1,49 @@
+<?
+session_start();
+$name_cat = $_GET['SearchPlaceHolder'];
+
+if (isset($_GET["Search"])) {
+    if ($name_cat) {
+        setcookie("SearchCookie", $name_cat, time() + 600);
+        header("Location: " . "shop.php");
+    }
+}
+
+if(isset($_GET["toCart"]))
+    header("Location: " . "busket.php");
+
+if (isset($_GET["ToLogin"]))
+    header("Location: " . "login.php");
+
+if (isset($_GET["toProfile"]))
+    header("Location: " . "profile.php");
+
+$hostname = 'localhost';
+$username = 'root';
+$password = '';
+$dbname = 'db_kotiki';
+
+require_once "../classes/DataBase.php";
+
+$database = DataBase::getInstance($hostname, $username, $password, $dbname);
+
+if (isset($_POST["submitPassword"])) {
+    $check = ($_POST['password'] == $_POST['passwordCheck']);
+    
+    $password = hash("md5", $_POST['password']);
+
+    $login = $_SESSION['login'];
+
+    if($check){
+        $insert = $database->query("UPDATE users SET password = '$password' WHERE login = '$login'");
+        setcookie("passwordCheck", "truePassword", time()+60);
+    }
+    else{
+        setcookie("passwordCheck", "falsePassword", time()+60);
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,27 +80,34 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item"> <a href="index.php"><img class="logo-img" src="../favicon/logo.png">
+                            <li class="nav-item"> <a href="../index.php"><img class="logo-img" src="../favicon/logo.png">
                                 </a></li>
                             <li class="nav-item"> <a class="nav-link" aria-current="page" href="../index.php">Главная</a> </li>
                             <li class="nav-item"> <a class="nav-link" href="http://localhost/CoolCats/pages/shop.php">Каталог</a>
                             </li>
                         </ul>
                         <div class="d-flex">
-                            <input class="form-control me-2" type="search" placeholder="Искать котика" aria-label="Search" name="SearchPlaceHolder">
-                            <button class="btn btn-outline-light" type="submit" name="Search">Поиск</button>
-                            <button class="btn text-light icon d-flex" name="toCart">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
-                                    <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
-                                </svg>
-                            </button>
-                            <button class="btn text-light icon d-flex" name="toProfile">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-                                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                                </svg>
-                            </button>
-                            <button class="btn btn-outline-light" type="submit" name="ToLogin">Войти</button>
-                            </form>
+                                <form>
+                                    <input class="form-control me-2" type="search" placeholder="Искать котика" aria-label="Search" name="SearchPlaceHolder">
+                                    <button class="btn btn-outline-light search" type="submit" name="Search">Поиск</button>
+                                    <?
+                                    session_start();
+                                    if (isset($_SESSION['login'])):
+                                    ?>
+                                    <a href="pages/busket.php"> <button class="btn text-light icon d-flex" name="toCart">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
+                                                <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                                            </svg>
+                                        </button></a>
+                                    <button class="btn text-light icon d-flex" name="toProfile">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                                        </svg>
+                                    </button>
+                                    <?else:?>
+                                    <button class="btn btn-outline-light" type="submit" name="ToLogin">Войти</button>
+                                    <?endif?>
+                                </form>
                         </div>
                     </div>
             </nav>
@@ -77,15 +130,21 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="profile-container container">
-                            <h4 class="head-text">Профиль</h4>
-                            <div class="profile-border"></div>
-                            <h5 class="head-text">Изменить пароль</h5>
-                            <div class="col-3">
-                                <input type="text" name="password" class="form-control head-text" placeholder="Новый пароль">
-                            </div>
-                            <div class="col-3"><input type="text" name="password" class="form-control head-text" placeholder="Подтвреждение пароля"></div>
-                            <button class="head-text btn btn-primary">Сменить пароль</button>
-                            <p class="error-change">Ошибка пароли не совпадают</p>
+                            <form method="post" class="d-block">
+                                <h4 class="head-text">Профиль</h4>
+                                <div class="profile-border"></div>
+                                <h5 class="head-text">Изменить пароль</h5>
+                                <div class="col-3">
+                                    <input type="text" name="password" class="form-control head-text" placeholder="Новый пароль">
+                                </div>
+                                <div class="col-3"><input type="text" name="passwordCheck" class="form-control head-text" placeholder="Подтвреждение пароля"></div>
+                                <button name="submitPassword" class="head-text btn btn-primary">Сменить пароль</button>
+                                <?if($_COOKIE['passwordCheck'] == "falsePassword"):?>
+                                    <p class="error-change">Ошибка пароли не совпадают</p>
+                                <?endif?>
+                                <button class="btn btn-danger head-text">Выйти</button>
+                            </form>
+                            <?if ($_SESSION['role'] == "Admin"):?>                            }
                             <div class="admin-panel">
                                 <h5>Панель админа</h5>
                                 <div class="profile-border"></div>
@@ -117,6 +176,7 @@
                                 </div>
 
                             </div>
+                            <?endif?>
 
                         </div>
                     </div>
@@ -129,3 +189,5 @@
 </body>
 
 </html>
+
+

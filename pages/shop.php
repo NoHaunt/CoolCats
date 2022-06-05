@@ -7,6 +7,26 @@ if (isset($_GET["Search"])) {
         header("Location: " . "shop.php");
     }
 }
+if(isset($_GET["toCart"])){
+    header("Location: " . "busket.php");
+}
+
+if (isset($_GET["ToLogin"])){
+    header("Location: " . "login.php");
+}
+
+if (isset($_GET["toProfile"])) {
+    header("Location: " . "profile.php");
+}
+
+if(isset($_GET["toCart"]))
+    header("Location: " . "busket.php");
+
+if (isset($_GET["ToLogin"]))
+    header("Location: " . "login.php");
+
+if (isset($_GET["toProfile"]))
+    header("Location: " . "profile.php");
 
 
 $hostname = 'localhost';
@@ -52,15 +72,15 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item"> <a href="index.php"><img class="logo-img" src="../favicon/logo.png"> </a></li>
+                            <li class="nav-item"> <a href="../index.php"><img class="logo-img" src="../favicon/logo.png"> </a></li>
                             <li class="nav-item"> <a class="nav-link" aria-current="page" href="../index.php">Главная</a> </li>
-                            <li class="nav-item"> <a class="nav-link active" href="shop.php">Каталог</a>
+                            <li class="nav-item"> <a class="nav-link" href="catalog.php">Каталог</a>
                             </li>
                         </ul>
                         <div class="d-flex">
                             <form>
                                 <input class="form-control me-2" type="search" placeholder="Искать котика" aria-label="Search" name="SearchPlaceHolder">
-                                <button class="btn btn-outline-light" type="submit" name="Search">Поиск</button>
+                                <button class="btn btn-outline-light search" type="submit" name="Search">Поиск</button>
                                 <?
                                 session_start();
                                 if (isset($_SESSION['login'])):
@@ -124,16 +144,7 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
                                     </ul>
                                 </div> <span>Найдено <?= $countCats ?> котика</span>
                             </div>
-                            <div class="sort-box-right"> <span>Сортировать:</span>
-                                <div class="sort-box-option">
-                                    <label class="select-sort-arrow">
-                                        <select name="select-sort" class="select-sort">
-                                            <option value="1">От А до Я</option>
-                                            <option value="2">От Я до А</option>
-                                        </select>
-                                    </label>
-                                </div>
-                            </div>
+                            
                         </div>
                         <? if ($select) : ?>
 

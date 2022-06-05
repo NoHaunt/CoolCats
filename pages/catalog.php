@@ -7,6 +7,26 @@ if (isset($_GET["Search"])) {
         header("Location: " . "shop.php");
     }
 }
+if(isset($_GET["toCart"])){
+    header("Location: " . "busket.php");
+}
+
+if (isset($_GET["ToLogin"])){
+    header("Location: " . "login.php");
+}
+
+if (isset($_GET["toProfile"])) {
+    header("Location: " . "profile.php");
+}
+
+if(isset($_GET["toCart"]))
+    header("Location: " . "busket.php");
+
+if (isset($_GET["ToLogin"]))
+    header("Location: " . "login.php");
+
+if (isset($_GET["toProfile"]))
+    header("Location: " . "profile.php");
 
 $hostname = 'localhost';
 $username = 'root';
@@ -51,7 +71,7 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item"> <a href="index.php"><img class="logo-img" src="../favicon/logo.png"> </a></li>
+                            <li class="nav-item"> <a href="../index.php"><img class="logo-img" src="../favicon/logo.png"> </a></li>
                             <li class="nav-item"> <a class="nav-link" aria-current="page" href="../index.php">Главная</a> </li>
                             <li class="nav-item"> <a class="nav-link active" href="shop.php">Каталог</a>
                             </li>
@@ -59,7 +79,7 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
                         <div class="d-flex">
                             <form>
                                 <input class="form-control me-2" type="search" placeholder="Искать котика" aria-label="Search" name="SearchPlaceHolder">
-                                <button class="btn btn-outline-light" type="submit" name="Search">Поиск</button>
+                                <button class="btn btn-outline-light search" type="submit" name="Search">Поиск</button>
                                 <?
                                 session_start();
                                 if (isset($_SESSION['login'])):
@@ -99,16 +119,12 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
             </div>
             <div class="container">
                 <?
-                $searchCat = $_COOKIE['SearchCookie'];
                 $countCats = 0;
-                $select = false;
-                if($searchCat){
-                    $select = $database->select_query("
-                        SELECT * FROM Kotiki");
+                $select = $database->select_query("
+                    SELECT * FROM Kotiki");
 
-                    if ($select)
-                        $countCats = count($select);
-                }
+                if ($select)
+                    $countCats = count($select);
                 ?>
                 <div class="row">
                     <div class="col-12">
@@ -121,16 +137,7 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
                                     </ul>
                                 </div> <span>Всего <?=$countCats?> кульных котика</span>
                             </div>
-                            <div class="sort-box-right"> <span>Сортировать:</span>
-                                <div class="sort-box-option">
-                                    <label class="select-sort-arrow">
-                                        <select name="select-sort" class="select-sort">
-                                            <option value="1">От А до Я</option>
-                                            <option value="2">От Я до А</option>
-                                        </select>
-                                    </label>
-                                </div>
-                            </div>
+                            
                         </div>
                         <?if($select):?>
                         <ul class="list-group shop-list">
@@ -140,14 +147,14 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="product-img-box">
-                                                <a href="kotik.php"><img class="product-img" src="../<?=$cat["url_picture"]?>"></a>
+                                                <a href="#"><img class="product-img" src="../<?=$cat["url_picture"]?>"></a>
                                             </div>
                                         </div>
                                         <div class="col-md-5 position-relative">
                                             <div class="border-right"></div>
                                             <div class="product-price">
                                                 <span class="product-price-reg"><?echo number_format($cat["price"], 0, ",", " ");?> руб.</span>
-                                            </div> <a href="kotik.php" class="product-title">
+                                            </div> <a href="#" class="product-title">
                                                 <?=$cat["name"]?>
                                             </a>
                                             <div class="product-description">
@@ -159,7 +166,7 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
                                                 <li>
                                                     <button class="btn btn-outline-primary">Добавить в корзину</button>
                                                 </li>
-                                                <li><a href="kotik.php" class="Quick-view"><i class="far fa-eye"></i>Просмотр</a></li>
+                                                <li><a href="#" class="Quick-view"><i class="far fa-eye"></i>Просмотр</a></li>
                                             </ul>
                                         </div>
                                     </div>

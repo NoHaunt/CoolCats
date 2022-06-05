@@ -12,8 +12,8 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
 function checkLogin($data, $login, $password){
     $password = hash("md5", $password);
 
-    for ($i=0; $i < count($data); $i++) { 
-        if ($data[$i]["login"] == $login and $data[$i]["password"]) {
+    for ($i=0; $i < count($data); $i++) {
+        if ($data[$i]["login"] == $login and $data[$i]["password"] == $password) {
             if ($data[$i]["isAdmin"])
                 return "Admin";
             else

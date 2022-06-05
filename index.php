@@ -8,13 +8,14 @@ if (isset($_GET["Search"])){
     }
 }
 
-if(isset($_GET["toCart"])){
+if(isset($_GET["toCart"]))
     header("Location: " . "pages/busket.php");
-}
 
-if (isset($_GET["ToLogin"])){
+if (isset($_GET["ToLogin"]))
     header("Location: " . "pages/login.php");
-}
+
+if (isset($_GET["toProfile"]))
+    header("Location: " . "pages/profile.php");
 
 $hostname = 'localhost';
 $username = 'root';
@@ -60,13 +61,13 @@ if (isset($search)) {
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item"> <a href="index.php"><img class="logo-img" src="favicon/logo.png"> </a></li>
                         <li class="nav-item"> <a class="nav-link active" aria-current="page" href="#">Главная</a> </li>
-                        <li class="nav-item"> <a class="nav-link" href="http://localhost/CoolCats/pages/shop.php">Каталог</a>
+                        <li class="nav-item"> <a class="nav-link" href="pages/catalog.php">Каталог</a>
                         </li>
                     </ul>
                     <div class="d-flex">
                         <form>
                             <input class="form-control me-2" type="search" placeholder="Искать котика" aria-label="Search" name="SearchPlaceHolder">
-                            <button class="btn btn-outline-light" type="submit" name="Search">Поиск</button>
+                            <button class="btn btn-outline-light search" type="submit" name="Search">Поиск</button>
                             <?
                             session_start();
                             if (isset($_SESSION['login'])):
