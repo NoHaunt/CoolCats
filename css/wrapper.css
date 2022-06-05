@@ -16,3 +16,8 @@ body{
 .footer{
     height: 56px;
 }
+
+.logo-img{
+    height:40px;
+    width: auto;
+}
