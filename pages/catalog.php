@@ -1,7 +1,7 @@
 <?
 $name_cat = $_GET['SearchPlaceHolder'];
 
-if (isset($_GET["Search"];)) {
+if (isset($_GET["Search"])) {
     if ($name_cat) {
         setcookie("SearchCookie", $name_cat, time() + 600);
         header("Location: " . "shop.php");

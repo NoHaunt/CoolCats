@@ -77,7 +77,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="profile-container container">
-                            <h4 class="head-text">Фамилия Имя</h4>
+                            <h4 class="head-text">Профиль</h4>
                             <div class="profile-border"></div>
                             <h5 class="head-text">Изменить пароль</h5>
                             <div class="col-3">
