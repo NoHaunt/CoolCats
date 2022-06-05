@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июн 02 2022 г., 18:24
+-- Время создания: Июн 05 2022 г., 18:43
 -- Версия сервера: 5.6.51-log
 -- Версия PHP: 7.1.33
 
@@ -40,10 +40,11 @@ CREATE TABLE `kotiki` (
 --
 
 INSERT INTO `kotiki` (`id`, `name`, `description`, `price`, `url_picture`) VALUES
-(2, 'Абиссинский кот', '', 40000, 'img/abis-cat.jpg'),
+(2, 'Абиссинский котенок', '', 40000, 'img/abis-cat.jpg'),
 (3, 'Мейн-кун', '', 65000, 'img/Main-Kun.jpg'),
 (4, 'Британская золотая шиншилла', '', 25000, 'img/britain-gold.jpg'),
-(5, 'Шотландский кот', '', 15000, 'img/scot-cat.jpg');
+(5, 'Шотландский котенок', '', 15000, 'img/scot-cat.jpg'),
+(6, 'Селкирк-рекс', '', 5000, 'img/Selcirk-racs.jpg');
 
 -- --------------------------------------------------------
 
@@ -67,7 +68,7 @@ CREATE TABLE `orders` (
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `login` varchar(15) NOT NULL,
-  `password` varchar(15) NOT NULL,
+  `password` varchar(2048) NOT NULL,
   `is_Admin` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -76,7 +77,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `login`, `password`, `is_Admin`) VALUES
-(1, 'admin', '1324', 1);
+(1, 'admin', 'bb7946e7d85c81a9e69fee1cea4a087c', 1);
 
 --
 -- Индексы сохранённых таблиц
@@ -110,7 +111,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `kotiki`
 --
 ALTER TABLE `kotiki`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT для таблицы `orders`

@@ -1,5 +1,10 @@
 <?
 session_start();
+if (!$_SESSION["login"]){
+    header("Location: " . "index.php");
+    die();
+}
+
 $name_cat = $_GET['SearchPlaceHolder'];
 
 if (isset($_GET["Search"])) {
@@ -144,7 +149,7 @@ if (isset($_POST["submitPassword"])) {
                                 <?endif?>
                                 <button class="btn btn-danger head-text">Выйти</button>
                             </form>
-                            <?if ($_SESSION['role'] == "Admin"):?>                            }
+                            <?if ($_SESSION['role'] == "Admin"):?>
                             <div class="admin-panel">
                                 <h5>Панель админа</h5>
                                 <div class="profile-border"></div>

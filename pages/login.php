@@ -14,7 +14,7 @@ function checkLogin($data, $login, $password){
 
     for ($i=0; $i < count($data); $i++) {
         if ($data[$i]["login"] == $login and $data[$i]["password"] == $password) {
-            if ($data[$i]["isAdmin"])
+            if ($data[$i]["is_Admin"])
                 return "Admin";
             else
                 return "User";
