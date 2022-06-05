@@ -111,12 +111,12 @@
                                                 Абисссинский кот
                                             </a>
                                             <div class="product-description">
-                                                <p>Количество:<select name="select-sort" class="select-sort">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                        </select></p>
+                                                <p>Количество: <select name="select-sort" class="select-sort">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                    </select></p>
                                             </div>
                                         </div>
 
@@ -141,7 +141,12 @@
                                                 Абисссинский кот
                                             </a>
                                             <div class="product-description">
-                                                <p>Кот блять ахуенный</p>
+                                                <p>Количество: <select name="select-sort" class="select-sort">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                    </select></p>
                                             </div>
                                         </div>
 
@@ -151,7 +156,8 @@
                         </ul>
                         <div class="buying">
                             <h5>Мы сделали подсчеты лапками</h5>
-<p>Эти классные котики обойдутсвя вам <span class="price">40 000 руб.</span> Хотите их купить?</p>
+                            <p>Эти классные котики обойдутсвя вам <span class="price">40 000 руб.</span> Хотите их
+                                купить?</p>
                         </div>
                         <form class="buy-form">
                             <button class="btn btn-primary">Да Да Да Купить!</button>
