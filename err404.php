@@ -13,16 +13,16 @@
 </head>
 
 <body>
-    
-        <div class="container d-flex error">
+
+    <div class="container d-flex error">
         <div class="row">
             <div class="col-12">
                 <h1>404</h1>
                 <p>Страница не найдена :(</p>
                 <img src="errors/404.jpg" alt="">
-                <form class="mt-2">
+                <div class="mt-4">
                     <a href="index.php"><button class="btn btn-primary">Вернуться на главную</button></a>
-                </form>
+                </div>
             </div>
         </div>
     </div>
