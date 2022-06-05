@@ -80,7 +80,7 @@ if (isset($_POST["submitPassword"])) {
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item"> <a href="index.php"><img class="logo-img" src="../favicon/logo.png">
+                            <li class="nav-item"> <a href="../index.php"><img class="logo-img" src="../favicon/logo.png">
                                 </a></li>
                             <li class="nav-item"> <a class="nav-link" aria-current="page" href="../index.php">Главная</a> </li>
                             <li class="nav-item"> <a class="nav-link" href="http://localhost/CoolCats/pages/shop.php">Каталог</a>
@@ -89,7 +89,7 @@ if (isset($_POST["submitPassword"])) {
                         <div class="d-flex">
                                 <form>
                                     <input class="form-control me-2" type="search" placeholder="Искать котика" aria-label="Search" name="SearchPlaceHolder">
-                                    <button class="btn btn-outline-light" type="submit" name="Search">Поиск</button>
+                                    <button class="btn btn-outline-light search" type="submit" name="Search">Поиск</button>
                                     <?
                                     session_start();
                                     if (isset($_SESSION['login'])):
@@ -142,6 +142,7 @@ if (isset($_POST["submitPassword"])) {
                                 <?if($_COOKIE['passwordCheck'] == "falsePassword"):?>
                                     <p class="error-change">Ошибка пароли не совпадают</p>
                                 <?endif?>
+                                <button class="btn btn-danger head-text">Выйти</button>
                             </form>
                             <?if ($_SESSION['role'] == "Admin"):?>                            }
                             <div class="admin-panel">

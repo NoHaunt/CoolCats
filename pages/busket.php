@@ -37,7 +37,7 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item"> <a href="index.php"><img class="logo-img" src="../favicon/logo.png">
+                            <li class="nav-item"> <a href="../index.php"><img class="logo-img" src="../favicon/logo.png">
                                 </a></li>
                             <li class="nav-item"> <a class="nav-link" aria-current="page"
                                     href="../index.php">Главная</a> </li>
@@ -48,7 +48,7 @@
                         <div class="d-flex">
                             <input class="form-control me-2" type="search" placeholder="Искать котика"
                                 aria-label="Search" name="SearchPlaceHolder">
-                            <button class="btn btn-outline-light" type="submit" name="Search">Поиск</button>
+                            <button class="btn btn-outline-light search" type="submit" name="Search">Поиск</button>
                             <button class="btn text-light icon d-flex" name="toCart">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                                     class="bi bi-cart2" viewBox="0 0 16 16">
