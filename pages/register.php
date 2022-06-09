@@ -1,4 +1,5 @@
 <?php
+session_start();
 $hostname = 'localhost';
 $username = 'root';
 $password = '';
@@ -24,10 +25,22 @@ if (isset($data['enter'])) {
         break;
     }
 
+    $databaseRegi = mysqli_connect($hostname, $username, $password, $dbname);
+
     if ($check) {
-        $check_regi = new Regi($database);
-        if ($check_regi->registration($data) == 1)
+        $check_regi = new Regi($databaseRegi);
+        if ($check_regi->registration($data) == 1){
+            $query = "SELECT * FROM users WHERE login = '$user_login'";
+
+            $select = $database->select_query($query);
+
+            $_SESSION['id'] = $select[0]["id"];
+            $_SESSION['login'] = $select[0]['login'];
+            $_SESSION['password'] = $select[0]['password'];
+            $_SESSION['role'] = "User";
+
             header('Location: ' . $new_url);
+        }
         else
             echo 'Пароли должны быть одинаковыми';
     }

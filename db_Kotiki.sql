@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июн 05 2022 г., 21:35
+-- Время создания: Июн 09 2022 г., 20:48
 -- Версия сервера: 5.6.51-log
 -- Версия PHP: 7.1.33
 
@@ -65,7 +65,12 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `id_User`, `id_Kotik`, `purchased`) VALUES
-(4, 1, 2, 0);
+(4, 1, 2, 1),
+(5, 1, 2, 1),
+(6, 1, 15, 1),
+(7, 1, 15, 1),
+(8, 1, 15, 1),
+(9, 1, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -85,7 +90,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `login`, `password`, `is_Admin`) VALUES
-(1, 'admin', 'bb7946e7d85c81a9e69fee1cea4a087c', 1);
+(1, 'admin', 'bb7946e7d85c81a9e69fee1cea4a087c', 1),
+(4, 'albert228', '827ccb0eea8a706c4c34a16891f84e7b', 0);
 
 --
 -- Индексы сохранённых таблиц
@@ -125,13 +131,13 @@ ALTER TABLE `kotiki`
 -- AUTO_INCREMENT для таблицы `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
