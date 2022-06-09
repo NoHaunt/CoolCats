@@ -1,4 +1,5 @@
 <?
+session_start();
 $name_cat = $_GET['SearchPlaceHolder'];
 
 if (isset($_GET["Search"])) {
@@ -49,6 +50,7 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
     <link href="../css/contact.css" rel="stylesheet">
     <link href="../css/shop.css" rel="stylesheet">
     <link href="../css/wrapper.css" rel="stylesheet">
+    <link type="image/x-icon" rel="icon" href="../favicon/logo.png">
     <title>&#128049;CSHOP&#128049;</title>
 </head>
 
@@ -73,8 +75,7 @@ $database = DataBase::getInstance($hostname, $username, $password, $dbname);
                                 <input class="form-control me-2" type="search" placeholder="Искать котика" aria-label="Search" name="SearchPlaceHolder">
                                 <button class="btn btn-outline-light search" type="submit" name="Search">Поиск</button>
                                 <?
-                                session_start();
-                                if (isset($_SESSION['login'])) :
+                                    if (isset($_SESSION['login'])) :
                                 ?>
                                     <a href="busket.php"> <button class="btn text-light icon d-flex" name="toCart">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">

@@ -5,6 +5,8 @@ $password = '';
 $dbname = 'db_kotiki';
 
 require_once "../classes/DataBase.php";
+require_once "../classes/Regi.php";
+
 
 $database = DataBase::getInstance($hostname, $username, $password, $dbname);
 
@@ -42,6 +44,7 @@ if (isset($data['enter'])) {
     <script src="../vendor/js/jquery-3.4.1.min.js"></script>
     <script src="https://kit.fontawesome.com/0be61fa4f3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/auth.css">
+    <link type="image/x-icon" rel="icon" href="../favicon/logo.png">
 </head>
 
 <body>

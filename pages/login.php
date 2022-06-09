@@ -24,6 +24,22 @@ function checkLogin($data, $login, $password)
 
     return false;
 }
+if (isset($_POST['submit'])) {
+    $array_users = $database->select_query("SELECT * FROM users");
+
+    $role = checkLogin($array_users, $_POST['login'], $_POST['password']);
+
+    if ($role) {
+        session_start();
+
+        $_SESSION['id'] = $role[0];
+        $_SESSION['login'] = $_POST['login'];
+        $_SESSION['password'] = $_POST['password'];
+        $_SESSION['role'] = $role[1];
+        header("Location: " . "../index.php");
+    } else
+        echo "Неправильный ввод данных, проверьте логин или пароль, который вы написали";
+}
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +53,7 @@ function checkLogin($data, $login, $password)
     <script src="../vendor/js/jquery-3.4.1.min.js"></script>
     <script src="https://kit.fontawesome.com/0be61fa4f3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/auth.css">
-
+    <link type="image/x-icon" rel="icon" href="../favicon/logo.png">
 </head>
 
 <body>
@@ -56,22 +72,3 @@ function checkLogin($data, $login, $password)
 </body>
 
 </html>
-
-<?
-if (isset($_POST['submit'])) {
-    $array_users = $database->select_query("SELECT * FROM users");
-
-    $role = checkLogin($array_users, $_POST['login'], $_POST['password']);
-
-    if ($role) {
-        session_start();
-
-        $_SESSION['id'] = $role[0];
-        $_SESSION['login'] = $_POST['login'];
-        $_SESSION['password'] = $_POST['password'];
-        $_SESSION['role'] = $role[1];
-        header("Location: " . "../index.php");
-    } else
-        echo "Неправильный ввод данных, проверьте логин или пароль, который вы написали";
-}
-?>

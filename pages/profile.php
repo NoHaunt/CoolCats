@@ -83,6 +83,7 @@ if (isset($_POST["descriptionSiteSubmit"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="Keywords" content="<? echo file_get_contents("../files/KeyWords.txt") ?>">
     <meta name="description" content="<? echo file_get_contents("../files/DescriptionSite.txt") ?>">
+    <link type="image/x-icon" rel="icon" href="../favicon/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
     </script>
@@ -123,8 +124,7 @@ if (isset($_POST["descriptionSiteSubmit"])) {
                                 <input class="form-control me-2" type="search" placeholder="Искать котика" aria-label="Search" name="SearchPlaceHolder">
                                 <button class="btn btn-outline-light search" type="submit" name="Search">Поиск</button>
                                 <?
-                                session_start();
-                                if (isset($_SESSION['login'])) :
+                                    if (isset($_SESSION['login'])) :
                                 ?>
                                     <a href="busket.php"> <button class="btn text-light icon d-flex" name="toCart">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
