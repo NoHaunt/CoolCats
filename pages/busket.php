@@ -167,14 +167,6 @@ if (isset($_GET['buy'])) {
                                                     </a>
                                                 </div>
                                             </div>
-                                            <div class="col-md-8 position-relative">
-                                                <div class="border-right"></div>
-                                                <div class="product-price">
-                                                    <span class="product-price-reg"><? echo number_format($value["price"], 0, ",", " ") ?> руб.</span>
-                                                </div> <a href="kotik.php" class="product-title">
-                                                    <?= $value["name"] ?>
-                                                </a>
-                                            </div>
                                         </div>
                                     </li>
                                 <?$sum += $value["price"];?>
